@@ -770,15 +770,15 @@ body.folk-bg {
 }
 
 .hanoi-disk {
-  height: 20px;
-  border-radius: 5px;
-  margin-top: 3px;
+  height: 24px;
+  border-radius: 6px;
+  margin-top: 4px;
   border: 2px solid #3a1b0f;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.35);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 10px;
+  font-size: 11px;
   font-weight: bold;
   color: #fff;
   text-shadow: 1px 1px 1px #000;
@@ -786,14 +786,14 @@ body.folk-bg {
 }
 
 .hanoi-disk.lifted {
-  transform: translateY(-24px);
+  transform: translateY(-28px);
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.4);
 }
 
-.disk-size-1 { width: 34%; background: linear-gradient(180deg, #ff8177, #cf443b); }
-.disk-size-2 { width: 44%; background: linear-gradient(180deg, #ffd152, #e8b042); }
-.disk-size-3 { width: 54%; background: linear-gradient(180deg, #5fcb8b, #2b583f); }
-.disk-size-4 { width: 64%; background: linear-gradient(180deg, #5ebdf0, #23495d); }
+.disk-size-1 { width: 44%; background: linear-gradient(180deg, #ff8177, #cf443b); }
+.disk-size-2 { width: 62%; background: linear-gradient(180deg, #ffd152, #e8b042); }
+.disk-size-3 { width: 80%; background: linear-gradient(180deg, #5fcb8b, #2b583f); }
+.disk-size-4 { width: 98%; background: linear-gradient(180deg, #5ebdf0, #23495d); }
 .disk-size-5 { width: 74%; background: linear-gradient(180deg, #d495f5, #7a3e9d); }
 .disk-size-6 { width: 84%; background: linear-gradient(180deg, #f5a97f, #b35624); }
 .disk-size-7 { width: 96%; background: linear-gradient(180deg, #965d38, #542817); }

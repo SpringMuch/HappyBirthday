@@ -106,9 +106,9 @@ class AppManager {
       this.onGameWin(1, 'Mảnh I: Bệ Bánh Ngũ Thường', 'Ghép hoàn tất 50 khối ảnh kỷ niệm tuyệt đẹp!');
     });
 
-    // 2. Tower of Hanoi (7 disks)
+    // 2. Tower of Hanoi (4 disks)
     this.games.hanoi = new HanoiGame((pieceId) => {
-      this.onGameWin(2, 'Mảnh II: Thân Bánh Thọ Lộc', 'Thất tầng tháp gốm chuyển dời thuận lợi, mang phúc khí tràn đầy!');
+      this.onGameWin(2, 'Mảnh II: Thân Bánh Thọ Lộc', 'Tứ tầng tháp gốm chuyển dời thuận lợi, mang phúc khí tràn đầy!');
     });
 
     // 3. Lights Out (3x3)

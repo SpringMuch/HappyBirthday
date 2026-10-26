@@ -200,7 +200,7 @@ class JigsawPuzzleGame {
 class HanoiGame {
   constructor(onWinCallback) {
     this.onWin = onWinCallback;
-    this.numDisks = 7;
+    this.numDisks = 4; // 4 disks: 15 optimal moves
     this.pegs = [[], [], []];
     this.selectedPeg = null;
     this.moves = 0;
