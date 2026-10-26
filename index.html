@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Ngũ Phúc Kỳ Duyên - Mừng Sinh Nhật Dân Gian</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="folk-bg">
+
+  <!-- Voice Audio for Grand Finale -->
+  <audio id="birthday-voice-audio" src="birthday_audio.mp3" preload="auto"></audio>
+
+  <!-- Background Ambience Elements -->
+  <div class="clouds-bg">
+    <div class="cloud cloud-1"></div>
+    <div class="cloud cloud-2"></div>
+    <div class="cloud cloud-3"></div>
+  </div>
+  <canvas id="ambient-canvas"></canvas>
+
+  <div id="app" class="app-container">
+    
+    <!-- HEADER BAR -->
+    <header class="app-header">
+      <div class="header-seal-left">
+        <span class="seal-box">吉<br>祥</span>
+      </div>
+      <div class="header-center">
+        <div class="header-pattern-top"></div>
+        <h1 class="main-title">HỘI THỬ THÁCH NGŨ PHÚC</h1>
+        <p class="sub-title">Vượt 5 Ải Dân Gian • Gom 5 Mảnh Ghép Khai Mở Bánh Sinh Nhật</p>
+      </div>
+      <div class="header-seal-right">
+        <button id="btn-audio-toggle" class="folk-btn-icon" title="Bật/Tắt âm thanh">🔊</button>
+      </div>
+    </header>
+
+    <!-- STATUS BANNER / PROGRESS -->
+    <section class="fragment-banner">
+      <div class="fragment-label">
+        <span class="stamp-icon">🪷</span>
+        <span>Mảnh Ghép Bánh Sinh Nhật: <strong id="collected-count">0/5</strong></span>
+      </div>
+      <div class="fragments-slots" id="fragments-slots">
+        <!-- 5 fragment slots -->
+        <div class="frag-slot" data-index="1" title="Mảnh 1: Bệ Bánh Ngũ Thường">
+          <span class="slot-num">I</span>
+          <div class="slot-fill"></div>
+          <span class="slot-name">Bệ Bánh</span>
+        </div>
+        <div class="frag-slot" data-index="2" title="Mảnh 2: Thân Bánh Thọ Lộc">
+          <span class="slot-num">II</span>
+          <div class="slot-fill"></div>
+          <span class="slot-name">Thân Bánh</span>
+        </div>
+        <div class="frag-slot" data-index="3" title="Mảnh 3: Tầng Bánh Phú Quý">
+          <span class="slot-num">III</span>
+          <div class="slot-fill"></div>
+          <span class="slot-name">Tầng Hoa</span>
+        </div>
+        <div class="frag-slot" data-index="4" title="Mảnh 4: Kem Gấm Cát Tường">
+          <span class="slot-num">IV</span>
+          <div class="slot-fill"></div>
+          <span class="slot-name">Kem Gấm</span>
+        </div>
+        <div class="frag-slot" data-index="5" title="Mảnh 5: Nến Thần Chúc Phúc">
+          <span class="slot-num">V</span>
+          <div class="slot-fill"></div>
+          <span class="slot-name">Nến Thần</span>
+        </div>
+      </div>
+      <div class="cake-preview-btn-wrap">
+        <button id="btn-go-cake" class="folk-btn folk-btn-gold pulse-attention" disabled>
+          🎂 Mở Bánh Sinh Nhật
+        </button>
+      </div>
+    </section>
+
+    <!-- MAIN CONTENT VIEW ROUTER -->
+    <main id="main-view" class="view-stage">
+
+      <!-- ================= HUB SCREEN ================= -->
+      <section id="screen-hub" class="screen active">
+        <div class="hub-hero">
+          <div class="scroll-border">
+            <div class="scroll-content">
+              <h2>MỜI BẠN NHẬP TIỆC</h2>
+              <p>Mỗi thử thách tượng trưng cho một lời chúc bình an, trí tuệ và may mắn. Hãy vượt qua từng ải để nhận về 5 mảnh ghép bảo vật, khai mở bánh sinh nhật đặc biệt!</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="game-cards-grid">
+          <!-- CARD 1: RESTORED ORIGINAL FOLK ART AVATAR -->
+          <article class="game-card" data-game="puzzle">
+            <div class="card-seal">Ải 1</div>
+            <div class="card-icon-art">
+              <svg viewBox="0 0 100 100" class="art-svg">
+                <rect x="15" y="15" width="70" height="70" rx="8" fill="#e7d3a4" stroke="#542817" stroke-width="4"/>
+                <path d="M15,50 H85 M50,15 V85" stroke="#b83b32" stroke-width="3" stroke-dasharray="3,3"/>
+                <circle cx="50" cy="50" r="14" fill="#b83b32" stroke="#542817" stroke-width="3"/>
+                <text x="50" y="55" font-size="12" text-anchor="middle" fill="#fff" font-weight="bold">50 KHỐI</text>
+              </svg>
+            </div>
+            <div class="card-body">
+              <h3>XẾP HÌNH MỘC BẢN</h3>
+              <p>Ghép 50 mảnh tranh gỗ cắt từ bức ảnh kỷ niệm thanh xuân của chúng ta thành bức họa hoàn mỹ.</p>
+              <div class="card-meta">
+                <span class="badge">50 Khối Gỗ</span>
+                <span class="badge-status" id="badge-puzzle">Chưa xong</span>
+              </div>
+            </div>
+            <button class="folk-btn folk-btn-red play-trigger" data-target="puzzle">Khởi Động Ải 1</button>
+          </article>
+
+          <!-- CARD 2 -->
+          <article class="game-card" data-game="hanoi">
+            <div class="card-seal">Ải 2</div>
+            <div class="card-icon-art">
+              <svg viewBox="0 0 100 100" class="art-svg">
+                <rect x="10" y="80" width="80" height="10" rx="3" fill="#542817"/>
+                <rect x="25" y="30" width="6" height="50" fill="#8e5535"/>
+                <rect x="50" y="30" width="6" height="50" fill="#8e5535"/>
+                <rect x="75" y="30" width="6" height="50" fill="#8e5535"/>
+                <rect x="36" y="73" width="34" height="7" rx="3" fill="#b83b32"/>
+                <rect x="40" y="66" width="26" height="7" rx="3" fill="#e8b042"/>
+                <rect x="44" y="59" width="18" height="7" rx="3" fill="#2b583f"/>
+              </svg>
+            </div>
+            <div class="card-body">
+              <h3>THÁP HÀ NỘI THẤT TẦNG</h3>
+              <p>Di chuyển trọn vẹn 7 đĩa gốm cổ sang cọc đích với quy tắc đĩa nhỏ luôn ở trên đĩa lớn.</p>
+              <div class="card-meta">
+                <span class="badge">7 Đĩa Thần</span>
+                <span class="badge-status" id="badge-hanoi">Chưa xong</span>
+              </div>
+            </div>
+            <button class="folk-btn folk-btn-red play-trigger" data-target="hanoi">Khởi Động Ải 2</button>
+          </article>
+
+          <!-- CARD 3 -->
+          <article class="game-card" data-game="lights">
+            <div class="card-seal">Ải 3</div>
+            <div class="card-icon-art">
+              <svg viewBox="0 0 100 100" class="art-svg">
+                <rect x="18" y="18" width="20" height="20" rx="4" fill="#fbd658" stroke="#542817" stroke-width="2"/>
+                <rect x="42" y="18" width="20" height="20" rx="4" fill="#8e5535" stroke="#542817" stroke-width="2"/>
+                <rect x="66" y="18" width="20" height="20" rx="4" fill="#fbd658" stroke="#542817" stroke-width="2"/>
+                <rect x="18" y="42" width="20" height="20" rx="4" fill="#8e5535" stroke="#542817" stroke-width="2"/>
+                <rect x="42" y="42" width="20" height="20" rx="4" fill="#fbd658" stroke="#542817" stroke-width="2"/>
+                <rect x="66" y="42" width="20" height="20" rx="4" fill="#8e5535" stroke="#542817" stroke-width="2"/>
+                <rect x="18" y="66" width="20" height="20" rx="4" fill="#fbd658" stroke="#542817" stroke-width="2"/>
+                <rect x="42" y="66" width="20" height="20" rx="4" fill="#8e5535" stroke="#542817" stroke-width="2"/>
+                <rect x="66" y="66" width="20" height="20" rx="4" fill="#fbd658" stroke="#542817" stroke-width="2"/>
+              </svg>
+            </div>
+            <div class="card-body">
+              <h3>CỬU ĐĂNG TỎA SÁNG</h3>
+              <p>Bật/tắt đèn lồng ô 3x3 sao cho toàn bộ 9 chiếc hoa đăng bừng sáng rực rỡ nghênh cát khí.</p>
+              <div class="card-meta">
+                <span class="badge">Bàn Cờ 3x3</span>
+                <span class="badge-status" id="badge-lights">Chưa xong</span>
+              </div>
+            </div>
+            <button class="folk-btn folk-btn-red play-trigger" data-target="lights">Khởi Động Ải 3</button>
+          </article>
+
+          <!-- CARD 4 -->
+          <article class="game-card" data-game="watersort">
+            <div class="card-seal">Ải 4</div>
+            <div class="card-icon-art">
+              <svg viewBox="0 0 100 100" class="art-svg">
+                <rect x="20" y="25" width="14" height="55" rx="7" fill="none" stroke="#542817" stroke-width="3"/>
+                <path d="M22,50 h10 v23 a5,5 0 0,1 -10,0 z" fill="#b83b32"/>
+                <path d="M22,35 h10 v15 h-10 z" fill="#e8b042"/>
+                
+                <rect x="43" y="25" width="14" height="55" rx="7" fill="none" stroke="#542817" stroke-width="3"/>
+                <path d="M45,45 h10 v28 a5,5 0 0,1 -10,0 z" fill="#23495d"/>
+                <path d="M45,30 h10 v15 h-10 z" fill="#2b583f"/>
+
+                <rect x="66" y="25" width="14" height="55" rx="7" fill="none" stroke="#542817" stroke-width="3"/>
+                <path d="M68,55 h10 v18 a5,5 0 0,1 -10,0 z" fill="#e8b042"/>
+              </svg>
+            </div>
+            <div class="card-body">
+              <h3>PHÂN LOẠI NGŨ SẮC THỦY</h3>
+              <p>Rót và gom các lớp chất lỏng màu sắc vào đúng từng bình tre, tạo nên 6 bình màu thuần khiết.</p>
+              <div class="card-meta">
+                <span class="badge">6 Ống Màu • 8 Tầng</span>
+                <span class="badge-status" id="badge-watersort">Chưa xong</span>
+              </div>
+            </div>
+            <button class="folk-btn folk-btn-red play-trigger" data-target="watersort">Khởi Động Ải 4</button>
+          </article>
+
+          <!-- CARD 5 -->
+          <article class="game-card" data-game="unblock">
+            <div class="card-seal">Ải 5</div>
+            <div class="card-icon-art">
+              <svg viewBox="0 0 100 100" class="art-svg">
+                <rect x="15" y="15" width="70" height="70" rx="6" fill="#e7d3a4" stroke="#542817" stroke-width="4"/>
+                <rect x="25" y="44" width="35" height="12" rx="3" fill="#b83b32" stroke="#542817" stroke-width="2"/>
+                <polygon points="65,50 60,46 60,54" fill="#ffd152"/>
+                <rect x="65" y="22" width="12" height="30" rx="3" fill="#8e5535" stroke="#542817" stroke-width="2"/>
+                <rect x="30" y="65" width="30" height="12" rx="3" fill="#542817" stroke="#33140a" stroke-width="2"/>
+              </svg>
+            </div>
+            <div class="card-body">
+              <h3>GIẢI PHÓNG KHỐI MỘC ĐỎ</h3>
+              <p>Đẩy các thanh chốt gỗ cản đường để đưa thanh khối mộc màu đỏ thoát qua cửa ải thênh thang.</p>
+              <div class="card-meta">
+                <span class="badge">Trí Uẩn Cổ Truyền</span>
+                <span class="badge-status" id="badge-unblock">Chưa xong</span>
+              </div>
+            </div>
+            <button class="folk-btn folk-btn-red play-trigger" data-target="unblock">Khởi Động Ải 5</button>
+          </article>
+        </div>
+      </section>
+
+      <!-- ================= GAME 1: JIGSAW PUZZLE (50 TILES) ================= -->
+      <section id="screen-game-puzzle" class="screen">
+        <div class="game-topbar">
+          <button class="folk-btn folk-btn-secondary btn-back-hub">◀ Về Đại Sảnh</button>
+          <div class="game-heading">
+            <h2>ẢI I: XẾP HÌNH MỘC BẢN (50 MẢNH)</h2>
+            <p>Nhìn tranh mẫu phía trên và ghép 50 mảnh tranh (10 cột × 5 hàng) phía dưới thành ảnh hoàn chỉnh</p>
+          </div>
+          <div class="game-actions">
+            <button id="btn-puzzle-reset" class="folk-btn folk-btn-secondary">Xáo Lại</button>
+            <button id="btn-puzzle-hint" class="folk-btn folk-btn-gold" title="Xem số thứ tự & ghép tự động 5 khối">💡 Gợi Ý (Hiện Số)</button>
+          </div>
+        </div>
+
+        <div class="puzzle-container">
+          <div class="puzzle-stats-panel">
+            <div class="stat-item">Khối đúng vị trí: <strong id="puzzle-correct-count">0</strong> / 50</div>
+            <div class="stat-item">Số lần hoán đổi: <strong id="puzzle-move-count">0</strong></div>
+            <div class="hint-text">Mẹo: Bấm chọn 1 mảnh rồi bấm mảnh thứ 2 để hoán đổi cho nhau! (Hoặc kéo thả trực tiếp)</div>
+          </div>
+
+          <!-- TOP: COMPACT ELEGANT REFERENCE PICTURE -->
+          <div class="puzzle-reference-card">
+            <div class="ref-title-badge">❖ BỨC TRANH MẪU HOÀN THIỆN ❖</div>
+            <div class="ref-image-box">
+              <img src="birthday_photo.jpg" alt="Tranh mẫu hoàn thiện" id="puzzle-ref-img" class="puzzle-ref-img">
+            </div>
+          </div>
+
+          <div class="puzzle-divider-label">
+            <span>▼ KHU VỰC GHÉP TRANH (50 KHỐI GỖ) ▼</span>
+          </div>
+
+          <!-- BOTTOM: PUZZLE TILES BOARD -->
+          <div class="puzzle-board-wrap">
+            <div id="puzzle-board" class="puzzle-board">
+              <!-- 50 sliced tiles will be generated dynamically -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= GAME 2: TOWER OF HANOI (7 DISKS) ================= -->
+      <section id="screen-game-hanoi" class="screen">
+        <div class="game-topbar">
+          <button class="folk-btn folk-btn-secondary btn-back-hub">◀ Về Đại Sảnh</button>
+          <div class="game-heading">
+            <h2>ẢI II: THÁP HÀ NỘI THẤT TẦNG (7 MẢNH)</h2>
+            <p>Chuyển toàn bộ 7 đĩa gốm từ Cột 1 sang Cột 3. Đĩa lớn không bao giờ được đặt lên đĩa nhỏ.</p>
+          </div>
+          <div class="game-actions">
+            <button id="btn-hanoi-undo" class="folk-btn folk-btn-secondary">↩ Đi Lại</button>
+            <button id="btn-hanoi-reset" class="folk-btn folk-btn-secondary">Làm Mới</button>
+            <button id="btn-hanoi-autosolve" class="folk-btn folk-btn-gold" title="Trợ giúp tự động giải bước tiếp">💡 Bước Kế</button>
+          </div>
+        </div>
+
+        <div class="hanoi-container">
+          <div class="hanoi-stats">
+            <div>Số bước: <strong id="hanoi-move-count">0</strong></div>
+            <div>Tối thiểu: <strong>127 bước</strong> (2⁷ - 1)</div>
+            <div class="hint-text">Mẹo: Bấm vào cột để nhấc đĩa trên cùng, bấm cột tiếp theo để thả xuống!</div>
+          </div>
+
+          <div class="hanoi-pegs-area" id="hanoi-board">
+            <div class="hanoi-peg-col" data-peg="0">
+              <div class="peg-label">Khởi Nguyên (Cột 1)</div>
+              <div class="peg-stand">
+                <div class="peg-rod"></div>
+                <div class="peg-disks" id="peg-disks-0"></div>
+              </div>
+              <button class="folk-btn folk-btn-peg" data-peg="0">Chọn / Thả Cột 1</button>
+            </div>
+
+            <div class="hanoi-peg-col" data-peg="1">
+              <div class="peg-label">Trung Gian (Cột 2)</div>
+              <div class="peg-stand">
+                <div class="peg-rod"></div>
+                <div class="peg-disks" id="peg-disks-1"></div>
+              </div>
+              <button class="folk-btn folk-btn-peg" data-peg="1">Chọn / Thả Cột 2</button>
+            </div>
+
+            <div class="hanoi-peg-col" data-peg="2">
+              <div class="peg-label">Đích Thọ Khang (Cột 3)</div>
+              <div class="peg-stand">
+                <div class="peg-rod"></div>
+                <div class="peg-disks" id="peg-disks-2"></div>
+              </div>
+              <button class="folk-btn folk-btn-peg" data-peg="2">Chọn / Thả Cột 3</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= GAME 3: LIGHTS OUT (3x3) ================= -->
+      <section id="screen-game-lights" class="screen">
+        <div class="game-topbar">
+          <button class="folk-btn folk-btn-secondary btn-back-hub">◀ Về Đại Sảnh</button>
+          <div class="game-heading">
+            <h2>ẢI III: CỬU ĐĂNG TỎA SÁNG (3x3)</h2>
+            <p>Bấm một lồng đèn sẽ đổi trạng thái (bật/tắt) của chính nó và 4 đèn lân cận. Làm sáng cả 9 đèn!</p>
+          </div>
+          <div class="game-actions">
+            <button id="btn-lights-reset" class="folk-btn folk-btn-secondary">Xếp Lại Đèn</button>
+            <button id="btn-lights-hint" class="folk-btn folk-btn-gold">💡 Gợi Ý Bước Đi</button>
+          </div>
+        </div>
+
+        <div class="lights-container">
+          <div class="lights-stats">
+            <div>Đèn đang sáng: <strong id="lights-on-count">0</strong> / 9</div>
+            <div>Số lần chạm: <strong id="lights-moves">0</strong></div>
+            <div class="hint-text">Mục tiêu: Đưa toàn bộ 9 lồng đèn sang sắc vàng rực rỡ để chiếu rọi phúc khí!</div>
+          </div>
+
+          <div class="lights-board-frame">
+            <div class="frame-corner top-left"></div>
+            <div class="frame-corner top-right"></div>
+            <div class="frame-corner bottom-left"></div>
+            <div class="frame-corner bottom-right"></div>
+            <div id="lights-board" class="lights-board">
+              <!-- 9 lights cells generated here -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= GAME 4: WATER SORT (6 COLORS, 8 TUBES) ================= -->
+      <section id="screen-game-watersort" class="screen">
+        <div class="game-topbar">
+          <button class="folk-btn folk-btn-secondary btn-back-hub">◀ Về Đại Sảnh</button>
+          <div class="game-heading">
+            <h2>ẢI IV: PHÂN LOẠI NGŨ SẮC THỦY</h2>
+            <p>Rót chất lỏng giữa các ống gốm sao cho mỗi ống chỉ chứa 1 màu duy nhất (mỗi ống chứa 8 phân đoạn chất lỏng)</p>
+          </div>
+          <div class="game-actions">
+            <button id="btn-water-undo" class="folk-btn folk-btn-secondary">↩ Đi Lại</button>
+            <button id="btn-water-reset" class="folk-btn folk-btn-secondary">Rót Lại Từ Đầu</button>
+          </div>
+        </div>
+
+        <div class="watersort-container">
+          <div class="watersort-stats">
+            <div>Ống hoàn thiện: <strong id="water-completed-tubes">0</strong> / 6</div>
+            <div>Số bước rót: <strong id="water-move-count">0</strong></div>
+            <div class="hint-text">Quy tắc: Chỉ được rót màu giống nhau lên nhau, hoặc rót vào ống trống. Ống có dung tích tối đa 8 tầng màu.</div>
+          </div>
+
+          <div id="watersort-tubes-area" class="tubes-grid">
+            <!-- 8 tubes (6 colored mixed + 2 empty buffer tubes) -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= GAME 5: UNBLOCK WOOD (UPGRADED AUTHENTIC LACQUERWARE) ================= -->
+      <section id="screen-game-unblock" class="screen">
+        <div class="game-topbar">
+          <button class="folk-btn folk-btn-secondary btn-back-hub">◀ Về Đại Sảnh</button>
+          <div class="game-heading">
+            <h2>ẢI V: GIẢI PHÓNG KHỐI MỘC ĐỎ</h2>
+            <p>Trượt các thanh chốt gỗ xung quanh để mở lối, đưa Khối Mộc Đỏ Sơn Mài (hàng 3) thoát qua Cổng Thoát!</p>
+          </div>
+          <div class="game-actions">
+            <button id="btn-unblock-reset" class="folk-btn folk-btn-secondary">Xếp Lại Gỗ</button>
+            <button id="btn-unblock-hint" class="folk-btn folk-btn-gold">💡 Gợi Ý Di Chuyển</button>
+          </div>
+        </div>
+
+        <div class="unblock-container">
+          <div class="unblock-stats">
+            <div>Số bước trượt: <strong id="unblock-move-count">0</strong></div>
+            <div class="hint-text">Khối ngang trượt ngang, khối dọc trượt dọc. Đưa khối đỏ sang mép phải để chiến thắng!</div>
+          </div>
+
+          <!-- UPGRADED LUXURY WOOD TRAY WITH BRASS HARDWARE -->
+          <div class="unblock-frame-outer">
+            <!-- Brass corner ornaments -->
+            <div class="brass-corner corner-tl">❖</div>
+            <div class="brass-corner corner-tr">❖</div>
+            <div class="brass-corner corner-bl">❖</div>
+            <div class="brass-corner corner-br">❖</div>
+
+            <div class="unblock-board-wrap">
+              <div id="unblock-board" class="unblock-board">
+                <!-- 6x6 grid with blocks -->
+              </div>
+              <!-- Grand Traditional Exit Gate -->
+              <div class="exit-gate-sign">
+                <span class="gate-icon">➔</span>
+                <span class="gate-text">CỬA THOÁT</span>
+                <span class="gate-glow"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= GRAND FINALE: BIRTHDAY CAKE & VOICE AUDIO ================= -->
+      <section id="screen-grand-finale" class="screen">
+        <div class="finale-curtain">
+          <div class="finale-header">
+            <div class="royal-seal-badge">NGŨ PHÚC ĐỒNG QUY • THÀNH CÔNG RỰC RỠ</div>
+            <h2 class="congrats-title">CHÚC MỪNG SINH NHẬT!</h2>
+            <p class="congrats-desc">Bạn đã hoàn thành trọn vẹn 5 thử thách! Chiếc bánh sinh nhật cát tường đã bừng sáng!</p>
+          </div>
+
+          <!-- ASSEMBLED CAKE INTERACTIVE STAGE -->
+          <div class="cake-assembly-stage cake-assembly-centered">
+            <div class="cake-pedestal">
+              
+              <!-- Traditional Grand Cake SVG Art -->
+              <div class="folk-cake-wrapper" id="cake-display">
+                <svg viewBox="0 0 360 420" class="folk-cake-svg">
+                  <defs>
+                    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#fff0aa"/>
+                      <stop offset="50%" stop-color="#e8b042"/>
+                      <stop offset="100%" stop-color="#9d6718"/>
+                    </linearGradient>
+                    <linearGradient id="crimsonGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                      <stop offset="0%" stop-color="#cf443b"/>
+                      <stop offset="100%" stop-color="#801c15"/>
+                    </linearGradient>
+                    <filter id="folkGlow" x="-20%" y="-20%" width="140%" height="140%">
+                      <feGaussianBlur stdDeviation="5" result="blur"/>
+                      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+                    </filter>
+                  </defs>
+
+                  <!-- Tier 1: Pedestal (Mảnh 1) -->
+                  <g id="cake-part-1" class="cake-layer layer-pedestal">
+                    <ellipse cx="180" cy="380" rx="160" ry="25" fill="#542817"/>
+                    <path d="M30,370 C30,370 70,395 180,395 C290,395 330,370 330,370 L320,400 C320,400 270,415 180,415 C90,415 40,400 40,400 Z" fill="#3a1b0f"/>
+                    <path d="M60,375 Q75,360 90,375 Q105,360 120,375 Q135,360 150,375 Q165,360 180,375 Q195,360 210,375 Q225,360 240,375 Q255,360 270,375 Q285,360 300,375" fill="none" stroke="#e8b042" stroke-width="3"/>
+                  </g>
+
+                  <!-- Tier 2: Base Tier (Mảnh 2) -->
+                  <g id="cake-part-2" class="cake-layer layer-base">
+                    <rect x="55" y="270" width="250" height="90" rx="16" fill="url(#crimsonGrad)" stroke="#542817" stroke-width="4"/>
+                    <path d="M60,300 Q90,320 120,300 T180,300 T240,300 T300,300" fill="none" stroke="url(#goldGrad)" stroke-width="4"/>
+                    <circle cx="100" cy="335" r="8" fill="#e8b042"/>
+                    <circle cx="140" cy="335" r="8" fill="#e8b042"/>
+                    <circle cx="180" cy="335" r="12" fill="#fff" stroke="#e8b042" stroke-width="3"/>
+                    <text x="180" y="340" font-size="11" text-anchor="middle" fill="#801c15" font-weight="bold">THỌ</text>
+                    <circle cx="220" cy="335" r="8" fill="#e8b042"/>
+                    <circle cx="260" cy="335" r="8" fill="#e8b042"/>
+                  </g>
+
+                  <!-- Tier 3: Middle Tier (Mảnh 3) -->
+                  <g id="cake-part-3" class="cake-layer layer-middle">
+                    <rect x="90" y="195" width="180" height="80" rx="14" fill="#f4ebd9" stroke="#542817" stroke-width="4"/>
+                    <circle cx="180" cy="235" r="18" fill="#b83b32"/>
+                    <text x="180" y="241" font-size="15" text-anchor="middle" fill="#fff" font-weight="bold">PHÚC</text>
+                    <path d="M120,235 C135,215 145,255 160,235" fill="none" stroke="#2b583f" stroke-width="3"/>
+                    <path d="M200,235 C215,215 225,255 240,235" fill="none" stroke="#2b583f" stroke-width="3"/>
+                  </g>
+
+                  <!-- Tier 4: Top Tier Frosting (Mảnh 4) -->
+                  <g id="cake-part-4" class="cake-layer layer-top">
+                    <rect x="120" y="130" width="120" height="70" rx="12" fill="url(#crimsonGrad)" stroke="#542817" stroke-width="4"/>
+                    <path d="M120,150 Q135,165 150,150 Q165,165 180,150 Q195,165 210,150 Q225,165 240,150" fill="none" stroke="#fff0aa" stroke-width="5" stroke-linecap="round"/>
+                    <ellipse cx="180" cy="130" rx="60" ry="12" fill="#fff0aa" stroke="#542817" stroke-width="3"/>
+                  </g>
+
+                  <!-- Tier 5: Birthday Candles with Animated Flames (Mảnh 5) -->
+                  <g id="cake-part-5" class="cake-layer layer-candles">
+                    <!-- Left Candle -->
+                    <rect x="145" y="85" width="12" height="45" rx="3" fill="#e8b042" stroke="#542817" stroke-width="2"/>
+                    <line x1="151" y1="85" x2="151" y2="75" stroke="#333" stroke-width="2"/>
+                    <path class="flame flame-1" d="M151,75 C146,65 146,55 151,45 C156,55 156,65 151,75 Z" fill="#ff7a00" filter="url(#folkGlow)"/>
+                    <path class="flame-inner" d="M151,73 C148,65 148,58 151,50 C154,58 154,65 151,73 Z" fill="#fff799"/>
+
+                    <!-- Center Grand Candle -->
+                    <rect x="174" y="70" width="14" height="60" rx="3" fill="#b83b32" stroke="#542817" stroke-width="2"/>
+                    <line x1="181" y1="70" x2="181" y2="58" stroke="#333" stroke-width="2"/>
+                    <path class="flame flame-2" d="M181,58 C174,45 174,32 181,20 C188,32 188,45 181,58 Z" fill="#ff4d00" filter="url(#folkGlow)"/>
+                    <path class="flame-inner" d="M181,56 C177,46 177,36 181,27 C185,36 185,46 181,56 Z" fill="#ffff88"/>
+
+                    <!-- Right Candle -->
+                    <rect x="203" y="85" width="12" height="45" rx="3" fill="#2b583f" stroke="#542817" stroke-width="2"/>
+                    <line x1="209" y1="85" x2="209" y2="75" stroke="#333" stroke-width="2"/>
+                    <path class="flame flame-3" d="M209,75 C204,65 204,55 209,45 C214,55 214,65 209,75 Z" fill="#ff7a00" filter="url(#folkGlow)"/>
+                    <path class="flame-inner" d="M209,73 C206,65 206,58 209,50 C212,58 212,65 209,73 Z" fill="#fff799"/>
+                  </g>
+                </svg>
+              </div>
+
+              <!-- Audio visual indicator and Controls -->
+              <div class="audio-playing-indicator" id="audio-status-box">
+                <span class="music-wave-icon">🔊 🎶</span>
+                <span id="audio-status-text">Đang phát lời chúc sinh nhật...</span>
+              </div>
+
+              <div class="cake-controls">
+                <button id="btn-replay-voice" class="folk-btn folk-btn-gold">▶ Phát Lại Lời Chúc Âm Thanh</button>
+                <button id="btn-blow-candles" class="folk-btn folk-btn-red">🎂 Thổi Nến Ước Nguyện</button>
+                <button class="folk-btn folk-btn-secondary btn-back-hub">◀ Xem Lại Các Ải</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- CELEBRATION MODAL FOR EACH COMPLETED CHALLENGE -->
+    <div id="modal-fragment-reward" class="modal-backdrop hidden">
+      <div class="modal-card folk-modal bounce-in">
+        <div class="modal-seal-badge">CHÚC MỪNG CHIẾN THẮNG</div>
+        <h3 id="reward-title">BẠN ĐÃ ĐOẠT ĐƯỢC MẢNH GHÉP!</h3>
+        <div class="reward-icon-display">
+          <div id="reward-fragment-visual" class="reward-visual"></div>
+        </div>
+        <p id="reward-desc">Một mảnh của Chiếc Bánh Sinh Nhật Cát Tường đã quy về vị trí.</p>
+        <div class="modal-buttons">
+          <button id="btn-continue-journey" class="folk-btn folk-btn-gold">Tiếp Tục Chinh Phục</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SCRIPTS -->
+  <script src="audio.js"></script>
+  <script src="games.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

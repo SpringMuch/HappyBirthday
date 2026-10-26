@@ -1,0 +1,1397 @@
+/* ===================================================
+   NGŨ PHÚC KỲ DUYÊN - PHONG CÁCH TRANH DÂN GIAN ĐÔNG HỒ
+   =================================================== */
+
+:root {
+  --color-paper: #f7f1e1;
+  --color-paper-dark: #ecdcc1;
+  --color-diep: #fff9ed;
+  --color-ink: #2b1810;
+  --color-wood: #542817;
+  --color-wood-light: #7c4426;
+  --color-wood-dark: #371408;
+  --color-red: #b83b32;
+  --color-red-bright: #d94336;
+  --color-gold: #e8b042;
+  --color-gold-light: #fbe285;
+  --color-green: #2b583f;
+  --color-blue: #23495d;
+  --color-border: #4a2211;
+
+  --font-title: 'Cinzel', 'Playfair Display', serif;
+  --font-serif: 'Playfair Display', serif;
+  --font-sans: 'Be Vietnam Pro', system-ui, -apple-system, sans-serif;
+
+  --shadow-folk: 0 4px 12px rgba(55, 20, 8, 0.25);
+  --shadow-wood: inset 0 2px 4px rgba(255, 255, 255, 0.2), 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body.folk-bg {
+  min-height: 100vh;
+  background-color: #e8dbc3;
+  background-image: 
+    radial-gradient(#dfcdae 15%, transparent 16%), 
+    radial-gradient(#d6c09d 15%, transparent 16%),
+    linear-gradient(135deg, #f7f1e1 0%, #ecdcc1 50%, #e3ceb0 100%);
+  background-size: 60px 60px, 60px 60px, 100% 100%;
+  background-position: 0 0, 30px 30px, 0 0;
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  position: relative;
+}
+
+#ambient-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 999;
+}
+
+/* Background floating folk clouds */
+.clouds-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+  opacity: 0.35;
+}
+
+.cloud {
+  position: absolute;
+  width: 260px;
+  height: 80px;
+  background: radial-gradient(circle at 50% 50%, #fff 20%, #e9dcc6 80%);
+  border-radius: 100px;
+  border: 2px dashed rgba(84, 40, 23, 0.3);
+  filter: blur(1px);
+}
+
+.cloud-1 { top: 12%; left: -100px; animation: floatCloud 45s linear infinite; }
+.cloud-2 { top: 48%; right: -150px; animation: floatCloud 55s linear infinite reverse; }
+.cloud-3 { bottom: 15%; left: -80px; animation: floatCloud 60s linear infinite 5s; }
+
+@keyframes floatCloud {
+  0% { transform: translateX(-150px); }
+  100% { transform: translateX(calc(100vw + 250px)); }
+}
+
+.app-container {
+  position: relative;
+  z-index: 10;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 12px 16px 40px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ================= HEADER ================= */
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--color-paper);
+  border: 4px solid var(--color-wood);
+  border-radius: 12px;
+  padding: 12px 20px;
+  box-shadow: var(--shadow-folk);
+  position: relative;
+  margin-bottom: 14px;
+}
+
+.app-header::before, .app-header::after {
+  content: "❖";
+  position: absolute;
+  font-size: 18px;
+  color: var(--color-red);
+}
+.app-header::before { top: 4px; left: 6px; }
+.app-header::after { top: 4px; right: 6px; }
+
+.header-seal-left .seal-box {
+  display: inline-block;
+  background: var(--color-red);
+  color: #fff;
+  border: 2px solid #542817;
+  font-weight: 800;
+  font-size: 13px;
+  line-height: 1.1;
+  padding: 6px 8px;
+  border-radius: 4px;
+  box-shadow: 2px 2px 0 var(--color-wood);
+  letter-spacing: 1px;
+}
+
+.header-center {
+  text-align: center;
+  flex: 1;
+  padding: 0 10px;
+}
+
+.main-title {
+  font-family: var(--font-title);
+  font-size: clamp(1.2rem, 3.5vw, 1.85rem);
+  font-weight: 800;
+  color: var(--color-red);
+  letter-spacing: 1.5px;
+  text-shadow: 1px 1px 0 #fff, 2px 2px 0 rgba(84, 40, 23, 0.4);
+}
+
+.sub-title {
+  font-size: clamp(0.75rem, 2vw, 0.9rem);
+  color: var(--color-wood);
+  font-weight: 600;
+  margin-top: 3px;
+}
+
+.header-seal-right {
+  display: flex;
+  gap: 8px;
+}
+
+/* ================= BUTTONS ================= */
+.folk-btn {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  border: 2px solid var(--color-wood);
+  transition: all 0.18s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  box-shadow: 2px 2px 0 var(--color-wood);
+  text-transform: uppercase;
+}
+
+.folk-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0 0 0 var(--color-wood);
+}
+
+.folk-btn-icon {
+  background: #fbf6ee;
+  border: 2px solid var(--color-wood);
+  color: var(--color-wood);
+  font-weight: bold;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 1px 2px 0 var(--color-wood);
+  font-size: 0.85rem;
+  transition: transform 0.15s;
+}
+.folk-btn-icon:hover {
+  background: #fff;
+  transform: translateY(-1px);
+}
+
+.folk-btn-red {
+  background: var(--color-red);
+  color: #fff;
+}
+.folk-btn-red:hover {
+  background: var(--color-red-bright);
+}
+
+.folk-btn-gold {
+  background: var(--color-gold);
+  color: var(--color-wood-dark);
+}
+.folk-btn-gold:hover {
+  background: var(--color-gold-light);
+}
+
+.folk-btn-secondary {
+  background: #fdfaf2;
+  color: var(--color-wood);
+}
+.folk-btn-secondary:hover {
+  background: #fff;
+}
+
+.folk-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* ================= BANNER & FRAGMENTS PROGRESS ================= */
+.fragment-banner {
+  background: #fbf6ee;
+  border: 3px solid var(--color-wood);
+  border-radius: 10px;
+  padding: 10px 16px;
+  margin-bottom: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  box-shadow: var(--shadow-folk);
+}
+
+.fragment-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  color: var(--color-wood-dark);
+  font-size: 0.95rem;
+}
+
+.fragments-slots {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.frag-slot {
+  width: 58px;
+  height: 58px;
+  background: #e8dcc6;
+  border: 2px dashed var(--color-wood);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.frag-slot .slot-num {
+  font-family: var(--font-title);
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #8c6a56;
+}
+
+.frag-slot .slot-name {
+  font-size: 0.62rem;
+  color: #6a4933;
+  margin-top: 2px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.frag-slot.collected {
+  background: radial-gradient(circle, #ffeaa7 10%, #e8b042 90%);
+  border: 2px solid var(--color-red);
+  box-shadow: 0 0 10px rgba(232, 176, 66, 0.8);
+  transform: scale(1.05);
+}
+
+.frag-slot.collected .slot-num {
+  color: var(--color-red);
+}
+
+.frag-slot.collected .slot-name {
+  color: var(--color-wood-dark);
+  font-weight: bold;
+}
+
+.frag-slot.collected::after {
+  content: "✔";
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: var(--color-red);
+  color: #fff;
+  border-radius: 50%;
+  font-size: 10px;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #fff;
+}
+
+.pulse-attention:not(:disabled) {
+  animation: pulseGlow 1.6s infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 6px rgba(232, 176, 66, 0.6); transform: scale(1); }
+  50% { box-shadow: 0 0 18px rgba(184, 59, 50, 0.9); transform: scale(1.04); }
+}
+
+/* ================= SCREENS ================= */
+.view-stage {
+  flex: 1;
+  position: relative;
+}
+
+.screen {
+  display: none;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.screen.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ================= HUB SCREEN ================= */
+.hub-hero {
+  margin-bottom: 18px;
+}
+
+.scroll-border {
+  background: var(--color-paper);
+  border: 3px double var(--color-wood);
+  border-radius: 8px;
+  padding: 14px 20px;
+  text-align: center;
+  box-shadow: inset 0 0 15px rgba(84, 40, 23, 0.1);
+  position: relative;
+}
+
+.scroll-content h2 {
+  font-family: var(--font-title);
+  color: var(--color-red);
+  font-size: 1.25rem;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+
+.scroll-content p {
+  font-size: 0.92rem;
+  color: #4b2a1a;
+  line-height: 1.5;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.game-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.game-card {
+  background: #fdfbf7;
+  border: 3px solid var(--color-wood);
+  border-radius: 10px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-shadow: var(--shadow-folk);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.game-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(84, 40, 23, 0.3);
+}
+
+.card-seal {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background: var(--color-red);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 4px;
+  border: 1px solid #542817;
+}
+
+.card-icon-art {
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 12px;
+  background: #f4ecd9;
+  border-radius: 50%;
+  border: 2px solid var(--color-wood);
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.art-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+}
+
+.card-body h3 {
+  font-family: var(--font-title);
+  font-size: 1.05rem;
+  color: var(--color-wood-dark);
+  margin-bottom: 6px;
+}
+
+.card-body p {
+  font-size: 0.82rem;
+  color: #553523;
+  line-height: 1.45;
+  margin-bottom: 10px;
+  flex: 1;
+}
+
+.card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.badge {
+  background: #e8dcc6;
+  color: var(--color-wood-dark);
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.badge-status {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #926952;
+}
+
+.badge-status.done {
+  color: var(--color-green);
+  font-weight: 800;
+}
+
+/* ================= GAME TOPBAR ================= */
+.game-topbar {
+  background: var(--color-paper);
+  border: 3px solid var(--color-wood);
+  border-radius: 10px;
+  padding: 10px 14px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 14px;
+  box-shadow: var(--shadow-folk);
+}
+
+.game-heading {
+  flex: 1;
+  min-width: 200px;
+}
+
+.game-heading h2 {
+  font-family: var(--font-title);
+  font-size: 1.15rem;
+  color: var(--color-red);
+}
+
+.game-heading p {
+  font-size: 0.78rem;
+  color: var(--color-wood);
+}
+
+.game-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* ================= ẢI 1: PUZZLE (COMPACT TOP REFERENCE, CRISP BOTTOM BOARD) ================= */
+.puzzle-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.puzzle-stats-panel, .hanoi-stats, .lights-stats, .watersort-stats, .unblock-stats {
+  background: #fdfbf7;
+  border: 2px solid var(--color-wood);
+  border-radius: 8px;
+  padding: 8px 16px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  gap: 12px;
+  font-size: 0.85rem;
+  color: var(--color-wood-dark);
+}
+
+.hint-text {
+  font-size: 0.78rem;
+  color: #7b4f35;
+  font-style: italic;
+  width: 100%;
+  text-align: center;
+}
+
+/* Compact Top Reference Card */
+.puzzle-reference-card {
+  background: #fdfaf2;
+  border: 3px solid var(--color-wood);
+  border-radius: 8px;
+  padding: 6px 12px 10px;
+  box-shadow: var(--shadow-folk);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 260px; /* Compact */
+}
+
+.ref-title-badge {
+  font-family: var(--font-title);
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--color-red);
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+
+.ref-image-box {
+  width: 100%;
+  border: 2px solid var(--color-wood);
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  line-height: 0;
+}
+
+.puzzle-ref-img {
+  width: 100%;
+  height: auto;
+  max-height: 160px; /* Perfectly sized */
+  object-fit: contain;
+  display: block;
+}
+
+/* Divider Label */
+.puzzle-divider-label {
+  font-family: var(--font-title);
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--color-wood-dark);
+  background: #e8dcc6;
+  border: 2px solid var(--color-wood);
+  padding: 4px 14px;
+  border-radius: 16px;
+  letter-spacing: 0.8px;
+}
+
+/* Bottom Puzzle Board (50 tiles: 10 cols x 5 rows) */
+.puzzle-board-wrap {
+  width: 100%;
+  max-width: 780px;
+  background: #ded0b7;
+  border: 4px solid var(--color-wood);
+  border-radius: 10px;
+  padding: 8px;
+  box-shadow: var(--shadow-folk);
+}
+
+.puzzle-board {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  gap: 2px;
+  width: 100%;
+  aspect-ratio: 1024 / 816;
+  background: #542817;
+  border: 2px solid #542817;
+  user-select: none;
+  min-height: 260px;
+}
+
+.puzzle-piece {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  border-radius: 2px;
+  border: 1px solid rgba(84, 40, 23, 0.45);
+  transition: transform 0.12s, box-shadow 0.12s, outline 0.12s;
+  background-color: #2b1810;
+  box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+}
+
+.puzzle-piece:hover {
+  filter: brightness(1.12);
+  z-index: 5;
+}
+
+.puzzle-piece.selected {
+  outline: 3px solid #ffde59;
+  box-shadow: 0 0 10px #ffde59;
+  transform: scale(0.95);
+  z-index: 10;
+}
+
+.puzzle-piece.correct {
+  border-color: rgba(43, 88, 63, 0.85);
+}
+
+.puzzle-piece .piece-num {
+  position: absolute;
+  top: 1px;
+  left: 2px;
+  font-size: 9px;
+  font-weight: 800;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.65);
+  padding: 0 3px;
+  border-radius: 2px;
+  pointer-events: none;
+  display: none;
+}
+
+.show-numbers .puzzle-piece .piece-num {
+  display: block;
+}
+
+/* ================= ẢI 2: THÁP HÀ NỘI (7 MẢNH) ================= */
+.hanoi-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.hanoi-pegs-area {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  width: 100%;
+  max-width: 860px;
+  background: #eee3cc;
+  border: 4px solid var(--color-wood);
+  border-radius: 12px;
+  padding: 20px 14px;
+  box-shadow: var(--shadow-folk);
+}
+
+.hanoi-peg-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.peg-label {
+  font-family: var(--font-title);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--color-wood-dark);
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.peg-stand {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 8px;
+  transition: background 0.2s;
+  padding-bottom: 12px;
+}
+
+.peg-stand:hover {
+  background: rgba(232, 176, 66, 0.2);
+}
+
+.peg-stand.selected-peg {
+  background: rgba(184, 59, 50, 0.2);
+  outline: 2px dashed var(--color-red);
+}
+
+.peg-stand::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  right: 10%;
+  height: 14px;
+  background: #542817;
+  border-radius: 4px;
+  border-top: 2px solid #8e5535;
+}
+
+.peg-rod {
+  position: absolute;
+  bottom: 14px;
+  width: 14px;
+  height: 210px;
+  background: linear-gradient(90deg, #8e5535, #542817);
+  border-radius: 6px 6px 0 0;
+  border: 1px solid #3a1b0f;
+  z-index: 1;
+}
+
+.peg-disks {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  width: 100%;
+}
+
+.hanoi-disk {
+  height: 22px;
+  border-radius: 6px;
+  margin-top: 3px;
+  border: 2px solid #3a1b0f;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 1px 1px 1px #000;
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.hanoi-disk.lifted {
+  transform: translateY(-30px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.4);
+}
+
+.disk-size-1 { width: 34%; background: linear-gradient(180deg, #ff8177, #cf443b); }
+.disk-size-2 { width: 44%; background: linear-gradient(180deg, #ffd152, #e8b042); }
+.disk-size-3 { width: 54%; background: linear-gradient(180deg, #5fcb8b, #2b583f); }
+.disk-size-4 { width: 64%; background: linear-gradient(180deg, #5ebdf0, #23495d); }
+.disk-size-5 { width: 74%; background: linear-gradient(180deg, #d495f5, #7a3e9d); }
+.disk-size-6 { width: 84%; background: linear-gradient(180deg, #f5a97f, #b35624); }
+.disk-size-7 { width: 94%; background: linear-gradient(180deg, #965d38, #542817); }
+
+.folk-btn-peg {
+  margin-top: 10px;
+  width: 90%;
+  font-size: 0.78rem;
+  padding: 6px;
+}
+
+/* ================= ẢI 3: LIGHTS OUT ================= */
+.lights-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.lights-board-frame {
+  position: relative;
+  background: #371408;
+  border: 6px solid #542817;
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+.frame-corner {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border: 3px solid var(--color-gold);
+}
+.frame-corner.top-left { top: 6px; left: 6px; border-right: none; border-bottom: none; }
+.frame-corner.top-right { top: 6px; right: 6px; border-left: none; border-bottom: none; }
+.frame-corner.bottom-left { bottom: 6px; left: 6px; border-right: none; border-top: none; }
+.frame-corner.bottom-right { bottom: 6px; right: 6px; border-left: none; border-top: none; }
+
+.lights-board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.lantern-cell {
+  width: 90px;
+  height: 90px;
+  background: #250d05;
+  border: 3px solid #542817;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+}
+
+.lantern-cell:hover {
+  transform: scale(1.04);
+}
+
+.lantern-cell.on {
+  background: radial-gradient(circle, #fff3a8 20%, #e8b042 70%, #8c5812 100%);
+  border-color: #ffd152;
+  box-shadow: 0 0 20px rgba(255, 215, 82, 0.8), inset 0 0 10px #fff;
+}
+
+.lantern-icon {
+  width: 48px;
+  height: 48px;
+  transition: filter 0.25s;
+}
+
+.lantern-cell.off .lantern-icon {
+  filter: grayscale(1) opacity(0.35);
+}
+
+.lantern-cell.on .lantern-icon {
+  filter: drop-shadow(0 0 6px rgba(255, 255, 200, 0.9));
+}
+
+.lantern-num {
+  font-size: 10px;
+  font-weight: bold;
+  color: #66412e;
+  margin-top: 2px;
+}
+.lantern-cell.on .lantern-num {
+  color: #542817;
+}
+
+/* ================= ẢI 4: WATER SORT ================= */
+.watersort-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.tubes-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px 24px;
+  width: 100%;
+  max-width: 780px;
+  background: #eedfc7;
+  border: 4px solid var(--color-wood);
+  border-radius: 14px;
+  padding: 24px 16px;
+  box-shadow: var(--shadow-folk);
+  justify-items: center;
+}
+
+@media (max-width: 600px) {
+  .tubes-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px 10px;
+  }
+}
+
+.water-tube {
+  width: 62px;
+  height: 220px;
+  background: rgba(255, 255, 255, 0.55);
+  border: 3px solid #542817;
+  border-top: none;
+  border-radius: 0 0 30px 30px;
+  display: flex;
+  flex-direction: column-reverse;
+  padding: 3px;
+  cursor: pointer;
+  position: relative;
+  box-shadow: inset 0 0 8px rgba(84, 40, 23, 0.2);
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.water-tube::before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  right: -6px;
+  height: 8px;
+  background: #8e5535;
+  border: 2px solid #542817;
+  border-radius: 6px;
+}
+
+.water-tube:hover {
+  transform: translateY(-4px);
+}
+
+.water-tube.selected {
+  transform: translateY(-16px);
+  border-color: var(--color-red);
+  box-shadow: 0 10px 20px rgba(184, 59, 50, 0.35);
+}
+
+.water-tube.completed {
+  border-color: var(--color-green);
+  box-shadow: 0 0 15px rgba(43, 88, 63, 0.4);
+}
+
+.water-layer {
+  width: 100%;
+  height: calc(100% / 8);
+  transition: height 0.2s ease;
+  position: relative;
+}
+
+.water-tube .water-layer:first-child {
+  border-radius: 0 0 24px 24px;
+}
+
+.color-red { background: linear-gradient(90deg, #d94336, #a62a21); }
+.color-gold { background: linear-gradient(90deg, #ffd152, #e8b042); }
+.color-green { background: linear-gradient(90deg, #429462, #245738); }
+.color-blue { background: linear-gradient(90deg, #489fc9, #1c4d66); }
+.color-purple { background: linear-gradient(90deg, #b065db, #632d85); }
+.color-brown { background: linear-gradient(90deg, #b37346, #613317); }
+
+/* ================= ẢI 5: UNBLOCK WOOD (UPGRADED LUXURY LACQUERWARE) ================= */
+.unblock-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.unblock-frame-outer {
+  position: relative;
+  background: linear-gradient(145deg, #441a0b, #200b03);
+  padding: 20px 42px 20px 20px;
+  border: 8px solid #542817;
+  border-radius: 14px;
+  box-shadow: 
+    inset 0 3px 6px rgba(255, 255, 255, 0.25), 
+    inset 0 -4px 8px rgba(0, 0, 0, 0.7), 
+    0 15px 35px rgba(0, 0, 0, 0.6);
+}
+
+/* Antique Brass Corner Brackets */
+.brass-corner {
+  position: absolute;
+  color: #ffd152;
+  font-size: 13px;
+  font-weight: bold;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #371408;
+  border: 2px solid #ffd152;
+  border-radius: 3px;
+  z-index: 8;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+}
+.corner-tl { top: 6px; left: 6px; }
+.corner-tr { top: 6px; right: 6px; }
+.corner-bl { bottom: 6px; left: 6px; }
+.corner-br { bottom: 6px; right: 6px; }
+
+.unblock-board-wrap {
+  position: relative;
+}
+
+/* Inner Board with traditional woven mat texture & cell grids */
+.unblock-board {
+  position: relative;
+  width: 360px;
+  height: 360px;
+  background-color: #dfcdb0;
+  background-image: 
+    linear-gradient(rgba(84, 40, 23, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(84, 40, 23, 0.08) 1px, transparent 1px);
+  background-size: calc(360px / 6) calc(360px / 6);
+  border: 4px solid #3a1506;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: inset 0 0 16px rgba(45, 18, 7, 0.45);
+  user-select: none;
+}
+
+@media (max-width: 440px) {
+  .unblock-board {
+    width: 280px;
+    height: 280px;
+    background-size: calc(280px / 6) calc(280px / 6);
+  }
+}
+
+/* Upgraded Grand Exit Gate */
+.exit-gate-sign {
+  position: absolute;
+  right: -42px;
+  top: calc((360px / 6) * 2);
+  height: calc(360px / 6);
+  width: 42px;
+  background: linear-gradient(90deg, #a62a21, #d94336);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0 8px 8px 0;
+  border: 2px solid #ffd152;
+  border-left: none;
+  box-shadow: 0 0 15px rgba(255, 209, 82, 0.5);
+  cursor: default;
+}
+
+.gate-icon {
+  font-size: 14px;
+  color: #ffd152;
+  animation: pulseArrow 1.2s infinite;
+}
+
+.gate-text {
+  font-size: 8px;
+  font-weight: 800;
+  writing-mode: vertical-rl;
+  letter-spacing: 2px;
+  color: #fff;
+  text-shadow: 1px 1px 2px #000;
+}
+
+@keyframes pulseArrow {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(4px); }
+}
+
+/* ================= 3D WOOD BLOCKS (LACQUER & ROSEWOOD) ================= */
+.wood-block {
+  position: absolute;
+  border-radius: 7px;
+  cursor: grab;
+  touch-action: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.08s, box-shadow 0.15s;
+}
+
+.wood-block:active {
+  cursor: grabbing;
+}
+
+/* Red Lacquer Target Block (Khối Mộc Đỏ Sơn Mài) */
+.wood-block-target {
+  background: radial-gradient(circle at 50% 30%, #ef4a3c 0%, #b82b20 70%, #7d1810 100%);
+  border: 2px solid #ffd152;
+  box-shadow: 
+    inset 0 2px 4px rgba(255, 255, 255, 0.4), 
+    inset 0 -2px 5px rgba(0, 0, 0, 0.6), 
+    0 5px 12px rgba(0, 0, 0, 0.45);
+}
+
+.wood-block-target:hover {
+  filter: brightness(1.08);
+}
+
+.lacquer-gloss {
+  position: absolute;
+  top: 2px;
+  left: 6px;
+  right: 6px;
+  height: 35%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.35), transparent);
+  border-radius: 5px 5px 10px 10px;
+  pointer-events: none;
+}
+
+.lacquer-gold-border {
+  position: absolute;
+  inset: 3px;
+  border: 1px dashed rgba(255, 209, 82, 0.7);
+  border-radius: 5px;
+  pointer-events: none;
+}
+
+.target-title {
+  position: relative;
+  z-index: 2;
+  font-size: 11px;
+  font-weight: 800;
+  color: #ffd152;
+  letter-spacing: 1.2px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+.target-arrow {
+  position: absolute;
+  right: 6px;
+  color: #ffd152;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+/* Normal Rosewood / Teak Blocks (Khối Gỗ Trầm) */
+.wood-block-normal {
+  background: linear-gradient(135deg, #8a532d 0%, #683818 50%, #4a220b 100%);
+  border: 2px solid #331508;
+  box-shadow: 
+    inset 0 2px 3px rgba(255, 255, 255, 0.25), 
+    inset 0 -2px 4px rgba(0, 0, 0, 0.7), 
+    0 4px 9px rgba(0, 0, 0, 0.4);
+}
+
+.wood-block-normal:hover {
+  filter: brightness(1.06);
+}
+
+.wood-grain-highlight {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0,
+    transparent 8px,
+    rgba(0, 0, 0, 0.08) 8px,
+    rgba(0, 0, 0, 0.08) 12px
+  );
+  border-radius: 5px;
+  pointer-events: none;
+}
+
+.wood-carved-groove {
+  position: absolute;
+  inset: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  pointer-events: none;
+}
+
+/* Antique Brass Studs */
+.wood-brass-stud {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #fff, #ffd152 40%, #8c6012 100%);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+  pointer-events: none;
+}
+.wood-block[style*="width: 1"] .stud-1 { top: 6px; }
+.wood-block[style*="width: 1"] .stud-2 { bottom: 6px; }
+.wood-block:not([style*="width: 1"]) .stud-1 { left: 8px; }
+.wood-block:not([style*="width: 1"]) .stud-2 { right: 8px; }
+
+/* ================= GRAND FINALE SCREEN ================= */
+.finale-curtain {
+  background: #fbf6ee;
+  border: 5px solid var(--color-wood);
+  border-radius: 14px;
+  padding: 28px 16px 40px;
+  box-shadow: 0 10px 30px rgba(84, 40, 23, 0.35);
+  position: relative;
+  text-align: center;
+}
+
+.finale-header {
+  margin-bottom: 24px;
+}
+
+.royal-seal-badge {
+  display: inline-block;
+  background: var(--color-red);
+  color: #fff;
+  font-family: var(--font-title);
+  font-size: 0.82rem;
+  letter-spacing: 2px;
+  font-weight: 800;
+  padding: 4px 14px;
+  border-radius: 4px;
+  border: 2px solid #542817;
+  margin-bottom: 8px;
+}
+
+.congrats-title {
+  font-family: var(--font-title);
+  color: var(--color-red);
+  font-size: clamp(1.4rem, 4vw, 2.2rem);
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.congrats-desc {
+  font-size: 0.95rem;
+  color: var(--color-wood);
+  margin-top: 6px;
+}
+
+.cake-assembly-centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.cake-pedestal {
+  width: 100%;
+  max-width: 440px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.folk-cake-wrapper {
+  width: 100%;
+  max-width: 360px;
+  filter: drop-shadow(0 15px 15px rgba(84, 40, 23, 0.25));
+}
+
+.folk-cake-svg {
+  width: 100%;
+  height: auto;
+}
+
+.cake-layer {
+  transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.6s ease;
+}
+
+.flame {
+  animation: flicker 1.2s infinite alternate ease-in-out;
+  transform-origin: center bottom;
+}
+.flame-2 { animation-delay: 0.3s; }
+.flame-3 { animation-delay: 0.6s; }
+
+@keyframes flicker {
+  0% { transform: scale(1) rotate(-1deg); }
+  50% { transform: scale(1.15, 0.95) rotate(2deg); }
+  100% { transform: scale(0.9, 1.1) rotate(-2deg); }
+}
+
+.audio-playing-indicator {
+  margin-top: 14px;
+  background: #f4ecd9;
+  border: 2px solid var(--color-wood);
+  border-radius: 20px;
+  padding: 6px 16px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--color-wood-dark);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.music-wave-icon {
+  animation: bounce 0.8s infinite alternate;
+}
+
+.cake-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+/* ================= MODALS ================= */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(43, 24, 16, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+  backdrop-filter: blur(2px);
+}
+
+.modal-backdrop.hidden {
+  display: none;
+}
+
+.folk-modal {
+  background: #fbf6ee;
+  border: 4px solid var(--color-wood);
+  border-radius: 12px;
+  padding: 24px;
+  max-width: 440px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+  position: relative;
+}
+
+.modal-seal-badge {
+  display: inline-block;
+  background: var(--color-red);
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.78rem;
+  padding: 4px 12px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  border: 1px solid #542817;
+}
+
+.folk-modal h3 {
+  font-family: var(--font-title);
+  color: var(--color-wood-dark);
+  font-size: 1.25rem;
+  margin-bottom: 8px;
+}
+
+.reward-visual {
+  width: 90px;
+  height: 90px;
+  margin: 14px auto;
+  background: radial-gradient(circle, #ffeaa7 0%, #e8b042 100%);
+  border-radius: 50%;
+  border: 3px solid var(--color-red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--color-wood-dark);
+  box-shadow: 0 0 20px rgba(232, 176, 66, 0.8);
+  animation: bounce 1s infinite alternate;
+}
+
+@keyframes bounce {
+  0% { transform: translateY(0) scale(1); }
+  100% { transform: translateY(-8px) scale(1.05); }
+}
+
+.modal-buttons {
+  margin-top: 18px;
+}
