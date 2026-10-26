@@ -758,6 +758,13 @@ class UnblockWoodGame {
       btnHint.onclick = () => this.autoHint();
     }
 
+    // Recalculate block positions on mobile screen rotation / resize
+    window.addEventListener('resize', () => {
+      if (document.getElementById('screen-game-unblock')?.classList.contains('active')) {
+        this.render();
+      }
+    });
+
     this.reset();
   }
 
