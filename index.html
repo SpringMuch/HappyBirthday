@@ -3,36 +3,66 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Ngũ Phúc Kỳ Duyên - Mừng Sinh Nhật Dân Gian</title>
+  <title>Happy 21st Birthday • Đêm Sao Hoàng Kim</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="folk-bg">
+<body class="celestial-bg">
 
   <!-- Voice Audio for Grand Finale -->
   <audio id="birthday-voice-audio" src="birthday_audio.mp3" preload="auto"></audio>
 
-  <!-- Background Ambience Elements -->
-  <div class="clouds-bg">
-    <div class="cloud cloud-1"></div>
-    <div class="cloud cloud-2"></div>
-    <div class="cloud cloud-3"></div>
+  <!-- Deep Space Nebula & Aurora Ambience -->
+  <div class="nebula-bg">
+    <div class="nebula-orb orb-1"></div>
+    <div class="nebula-orb orb-2"></div>
+    <div class="nebula-orb orb-3"></div>
   </div>
+
+  <!-- Interactive Starry Sky, Shooting Stars, Stardust Trail & Fireworks Canvas -->
   <canvas id="ambient-canvas"></canvas>
 
+  <!-- ================= POETIC INTRO OVERLAY: ROYAL STAR ENVELOPE ================= -->
+  <div id="intro-overlay" class="intro-overlay">
+    <div class="intro-card">
+      <div class="intro-constellation-deco">✦ ✧ ★ ✧ ✦</div>
+      <div class="intro-subtitle">TÌNH YÊU TRÁI TIM • LÝ TRÍ BỘ NÃO</div>
+      <h1 class="intro-title">CHÚC MỪNG SINH NHẬT 21 TUỔI</h1>
+      <p class="intro-love-note">“LOVE YOU, Babe!”</p>
+      <p class="intro-desc">
+        Bầu trời đêm nay thắp sáng vạn vì sao dành riêng cho tuổi 21 rực rỡ và bản lĩnh của cưng.<br>
+        Hãy khai mở ra hành trình 5 chòm sao thử thách!
+      </p>
+
+      <div class="wax-seal-wrap" id="btn-open-envelope" title="Chạm để mở thiệp">
+        <div class="wax-seal-glow"></div>
+        <div class="wax-seal">
+          <span class="seal-roman">XXI</span>
+          <span class="seal-num">21</span>
+          <span class="seal-star">★</span>
+        </div>
+        <span class="wax-seal-prompt">✦ Chạm Mở Bầu Trời Tuổi 21 ✦</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= MAIN APPLICATION CONTAINER ================= -->
   <div id="app" class="app-container">
     
     <!-- HEADER BAR -->
     <header class="app-header">
       <div class="header-seal-left">
-        <span class="seal-box">吉<br>祥</span>
+        <div class="seal-box">
+          <span class="seal-top">XXI</span>
+          <span class="seal-bottom">21 ★</span>
+        </div>
       </div>
       <div class="header-center">
-        <div class="header-pattern-top"></div>
-        <h1 class="main-title">HỘI THỬ THÁCH NGŨ PHÚC</h1>
-        <p class="sub-title">Vượt 5 Ải Dân Gian • Gom 5 Mảnh Ghép Khai Mở Bánh Sinh Nhật</p>
+        <div class="header-constellation">✦ ─── ★ ─── ✦</div>
+        <h1 class="main-title">ĐÊM SAO HOÀNG KIM • TUỔI 21</h1>
+        <p class="sub-title">Chinh Phục 5 Chòm Sao • Khai Mở Bánh Sinh Nhật Tình Yêu</p>
       </div>
       <div class="header-seal-right">
         <button id="btn-audio-toggle" class="folk-btn-icon" title="Bật/Tắt âm thanh">🔊</button>
@@ -42,40 +72,40 @@
     <!-- STATUS BANNER / PROGRESS -->
     <section class="fragment-banner">
       <div class="fragment-label">
-        <span class="stamp-icon">🪷</span>
-        <span>Mảnh Ghép Bánh Sinh Nhật: <strong id="collected-count">0/5</strong></span>
+        <span class="stamp-icon">✨</span>
+        <span>Tinh Cầu Bảo Vật: <strong id="collected-count">0/5</strong></span>
       </div>
       <div class="fragments-slots" id="fragments-slots">
         <!-- 5 fragment slots -->
-        <div class="frag-slot" data-index="1" title="Mảnh 1: Bệ Bánh Ngũ Thường">
+        <div class="frag-slot" data-index="1" title="Mảnh 1: Đế Pha Lê Hoàng Kim">
           <span class="slot-num">I</span>
           <div class="slot-fill"></div>
-          <span class="slot-name">Bệ Bánh</span>
+          <span class="slot-name">Đế Pha Lê</span>
         </div>
-        <div class="frag-slot" data-index="2" title="Mảnh 2: Thân Bánh Thọ Lộc">
+        <div class="frag-slot" data-index="2" title="Mảnh 2: Tầng Bánh Đêm Sao">
           <span class="slot-num">II</span>
           <div class="slot-fill"></div>
-          <span class="slot-name">Thân Bánh</span>
+          <span class="slot-name">Tầng Ngân Hà</span>
         </div>
-        <div class="frag-slot" data-index="3" title="Mảnh 3: Tầng Bánh Phú Quý">
+        <div class="frag-slot" data-index="3" title="Mảnh 3: Tầng Bánh Bạch Kim">
           <span class="slot-num">III</span>
           <div class="slot-fill"></div>
-          <span class="slot-name">Tầng Hoa</span>
+          <span class="slot-name">Tầng Hoàng Gia</span>
         </div>
-        <div class="frag-slot" data-index="4" title="Mảnh 4: Kem Gấm Cát Tường">
+        <div class="frag-slot" data-index="4" title="Mảnh 4: Vương Miện Ánh Sao">
           <span class="slot-num">IV</span>
           <div class="slot-fill"></div>
-          <span class="slot-name">Kem Gấm</span>
+          <span class="slot-name">Kem Ánh Sao</span>
         </div>
-        <div class="frag-slot" data-index="5" title="Mảnh 5: Nến Thần Chúc Phúc">
+        <div class="frag-slot" data-index="5" title="Mảnh 5: Nến Hoàng Kim Tuổi 21">
           <span class="slot-num">V</span>
           <div class="slot-fill"></div>
-          <span class="slot-name">Nến Thần</span>
+          <span class="slot-name">Nến Số 21</span>
         </div>
       </div>
       <div class="cake-preview-btn-wrap">
         <button id="btn-go-cake" class="folk-btn folk-btn-gold pulse-attention" disabled>
-          🎂 Mở Bánh Sinh Nhật
+          🎂 Mở Bánh Tuổi 21
         </button>
       </div>
     </section>
@@ -88,137 +118,150 @@
         <div class="hub-hero">
           <div class="scroll-border">
             <div class="scroll-content">
-              <h2>LOVE YOU, Babe!</h2>
-              <p>Mỗi thử thách tượng trưng cho một lời chúc bình an, trí tuệ và may mắn. Hãy vượt qua từng ải để nhận về 5 mảnh ghép bảo vật, khai mở bánh sinh nhật đặc biệt!</p>
+              <div class="hero-crown-badge">✦ CHÚC MỪNG SINH NHẬT TUỔI 21 ✦</div>
+              <h2 class="love-you-heading">LOVE YOU, Babe!</h2>
+              <p>Giữa bầu trời đêm lấp lánh ngàn sao, mỗi thử thách là một lời chúc tràn đầy bản lĩnh, thành công và hạnh phúc gửi đến tuổi 21 của cưng. Hãy thu thập đủ 5 Tinh Cầu để thắp sáng chiếc bánh sinh nhật đặc biệt nhé!</p>
             </div>
           </div>
         </div>
 
         <div class="game-cards-grid">
-          <!-- CARD 1: RESTORED ORIGINAL FOLK ART AVATAR -->
+          <!-- CARD 1: JIGSAW PUZZLE 50 TILES -->
           <article class="game-card" data-game="puzzle">
-            <div class="card-seal">Ải 1</div>
+            <div class="card-seal">Chòm Sao I</div>
             <div class="card-icon-art">
               <svg viewBox="0 0 100 100" class="art-svg">
-                <rect x="15" y="15" width="70" height="70" rx="8" fill="#e7d3a4" stroke="#542817" stroke-width="4"/>
-                <path d="M15,50 H85 M50,15 V85" stroke="#b83b32" stroke-width="3" stroke-dasharray="3,3"/>
-                <circle cx="50" cy="50" r="14" fill="#b83b32" stroke="#542817" stroke-width="3"/>
-                <text x="50" y="55" font-size="12" text-anchor="middle" fill="#fff" font-weight="bold">50 KHỐI</text>
+                <defs>
+                  <linearGradient id="cardGold1" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#fff3b0"/>
+                    <stop offset="50%" stop-color="#e5c158"/>
+                    <stop offset="100%" stop-color="#9e7618"/>
+                  </linearGradient>
+                </defs>
+                <rect x="14" y="14" width="72" height="72" rx="10" fill="#0d1b3a" stroke="url(#cardGold1)" stroke-width="3.5"/>
+                <path d="M14,50 H86 M50,14 V86" stroke="#38bdf8" stroke-width="1.8" stroke-dasharray="4,4" opacity="0.7"/>
+                <circle cx="50" cy="50" r="18" fill="#132854" stroke="url(#cardGold1)" stroke-width="2.5"/>
+                <text x="50" y="54" font-size="11" text-anchor="middle" fill="#fff3b0" font-weight="bold">50 MẢNH</text>
               </svg>
             </div>
             <div class="card-body">
-              <h3>XẾP HÌNH MỘC BẢN</h3>
-              <p>Ghép 50 mảnh tranh gỗ cắt từ bức ảnh kỷ niệm thanh xuân của chúng ta thành bức họa hoàn mỹ.</p>
+              <h3>KHUNG TRANH NGÂN HÀ</h3>
+              <p>Ghép 50 mảnh pha lê từ bức ảnh kỷ niệm thanh xuân của chúng ta thành tuyệt tác hoàn mỹ dưới ánh sao.</p>
               <div class="card-meta">
-                <span class="badge">50 Khối Gỗ</span>
-                <span class="badge-status" id="badge-puzzle">Chưa xong</span>
+                <span class="badge">50 Mảnh Kỷ Niệm</span>
+                <span class="badge-status" id="badge-puzzle">Chưa mở</span>
               </div>
             </div>
-            <button class="folk-btn folk-btn-red play-trigger" data-target="puzzle">Khởi Động Ải 1</button>
+            <button class="folk-btn folk-btn-gold play-trigger" data-target="puzzle">✦ Khám Phá Ải 1</button>
           </article>
 
-          <!-- CARD 2 -->
+          <!-- CARD 2: TOWER OF HANOI -->
           <article class="game-card" data-game="hanoi">
-            <div class="card-seal">Ải 2</div>
+            <div class="card-seal">Chòm Sao II</div>
             <div class="card-icon-art">
               <svg viewBox="0 0 100 100" class="art-svg">
-                <rect x="10" y="80" width="80" height="10" rx="3" fill="#542817"/>
-                <rect x="25" y="30" width="6" height="50" fill="#8e5535"/>
-                <rect x="50" y="30" width="6" height="50" fill="#8e5535"/>
-                <rect x="75" y="30" width="6" height="50" fill="#8e5535"/>
-                <rect x="33" y="73" width="40" height="7" rx="3" fill="#542817"/>
-                <rect x="37" y="66" width="32" height="7" rx="3" fill="#2b583f"/>
-                <rect x="41" y="59" width="24" height="7" rx="3" fill="#e8b042"/>
-                <rect x="45" y="52" width="16" height="7" rx="3" fill="#cf443b"/>
+                <rect x="12" y="80" width="76" height="8" rx="4" fill="#e5c158"/>
+                <rect x="25" y="28" width="4" height="52" rx="2" fill="#94a3b8"/>
+                <rect x="48" y="28" width="4" height="52" rx="2" fill="#e5c158"/>
+                <rect x="71" y="28" width="4" height="52" rx="2" fill="#94a3b8"/>
+                <rect x="30" y="71" width="40" height="7" rx="3.5" fill="#38bdf8"/>
+                <rect x="34" y="63" width="32" height="7" rx="3.5" fill="#818cf8"/>
+                <rect x="38" y="55" width="24" height="7" rx="3.5" fill="#f59e0b"/>
+                <rect x="42" y="47" width="16" height="7" rx="3.5" fill="#fff3b0"/>
               </svg>
             </div>
             <div class="card-body">
-              <h3>THÁP HÀ NỘI TỨ TẦNG</h3>
-              <p>Di chuyển trọn vẹn 4 đĩa gốm cổ sang cọc đích với quy tắc đĩa nhỏ luôn ở trên đĩa lớn.</p>
+              <h3>THÁP THIÊN HÀ TỨ TẦNG</h3>
+              <p>Di chuyển 4 đĩa năng lượng ánh sao sang trụ đích theo quy tắc đĩa nhỏ luôn ngự trên đĩa lớn.</p>
               <div class="card-meta">
-                <span class="badge">4 Đĩa Thần</span>
-                <span class="badge-status" id="badge-hanoi">Chưa xong</span>
+                <span class="badge">4 Đĩa Ánh Sáng</span>
+                <span class="badge-status" id="badge-hanoi">Chưa mở</span>
               </div>
             </div>
-            <button class="folk-btn folk-btn-red play-trigger" data-target="hanoi">Khởi Động Ải 2</button>
+            <button class="folk-btn folk-btn-gold play-trigger" data-target="hanoi">✦ Khám Phá Ải 2</button>
           </article>
 
-          <!-- CARD 3 -->
+          <!-- CARD 3: LIGHTS OUT -->
           <article class="game-card" data-game="lights">
-            <div class="card-seal">Ải 3</div>
+            <div class="card-seal">Chòm Sao III</div>
             <div class="card-icon-art">
               <svg viewBox="0 0 100 100" class="art-svg">
-                <rect x="18" y="18" width="20" height="20" rx="4" fill="#fbd658" stroke="#542817" stroke-width="2"/>
-                <rect x="42" y="18" width="20" height="20" rx="4" fill="#8e5535" stroke="#542817" stroke-width="2"/>
-                <rect x="66" y="18" width="20" height="20" rx="4" fill="#fbd658" stroke="#542817" stroke-width="2"/>
-                <rect x="18" y="42" width="20" height="20" rx="4" fill="#8e5535" stroke="#542817" stroke-width="2"/>
-                <rect x="42" y="42" width="20" height="20" rx="4" fill="#fbd658" stroke="#542817" stroke-width="2"/>
-                <rect x="66" y="42" width="20" height="20" rx="4" fill="#8e5535" stroke="#542817" stroke-width="2"/>
-                <rect x="18" y="66" width="20" height="20" rx="4" fill="#fbd658" stroke="#542817" stroke-width="2"/>
-                <rect x="42" y="66" width="20" height="20" rx="4" fill="#8e5535" stroke="#542817" stroke-width="2"/>
-                <rect x="66" y="66" width="20" height="20" rx="4" fill="#fbd658" stroke="#542817" stroke-width="2"/>
+                <line x1="25" y1="25" x2="50" y2="50" stroke="#e5c158" stroke-width="1.5" opacity="0.7"/>
+                <line x1="50" y1="50" x2="75" y2="25" stroke="#e5c158" stroke-width="1.5" opacity="0.7"/>
+                <line x1="50" y1="50" x2="50" y2="75" stroke="#e5c158" stroke-width="1.5" opacity="0.7"/>
+                <line x1="25" y1="75" x2="50" y2="50" stroke="#38bdf8" stroke-width="1.5" opacity="0.7"/>
+                <line x1="75" y1="75" x2="50" y2="50" stroke="#38bdf8" stroke-width="1.5" opacity="0.7"/>
+                <circle cx="25" cy="25" r="7" fill="#fff3b0"/>
+                <circle cx="50" cy="25" r="5" fill="#334155"/>
+                <circle cx="75" cy="25" r="7" fill="#fff3b0"/>
+                <circle cx="25" cy="50" r="5" fill="#334155"/>
+                <circle cx="50" cy="50" r="9" fill="#e5c158"/>
+                <circle cx="75" cy="50" r="5" fill="#334155"/>
+                <circle cx="25" cy="75" r="7" fill="#38bdf8"/>
+                <circle cx="50" cy="75" r="7" fill="#fff3b0"/>
+                <circle cx="75" cy="75" r="7" fill="#38bdf8"/>
               </svg>
             </div>
             <div class="card-body">
-              <h3>CỬU ĐĂNG TỎA SÁNG</h3>
-              <p>Bật/tắt đèn lồng ô 3x3 sao cho toàn bộ 9 chiếc hoa đăng bừng sáng rực rỡ nghênh cát khí.</p>
+              <h3>THẮP SÁNG CHÒM SAO</h3>
+              <p>Kích hoạt các vì sao trong ma trận 3×3 sao cho toàn bộ 9 ngôi sao Bắc Đẩu cùng bừng sáng rực rỡ.</p>
               <div class="card-meta">
-                <span class="badge">Bàn Cờ 3x3</span>
-                <span class="badge-status" id="badge-lights">Chưa xong</span>
+                <span class="badge">Ma Trận 3×3 Sao</span>
+                <span class="badge-status" id="badge-lights">Chưa mở</span>
               </div>
             </div>
-            <button class="folk-btn folk-btn-red play-trigger" data-target="lights">Khởi Động Ải 3</button>
+            <button class="folk-btn folk-btn-gold play-trigger" data-target="lights">✦ Khám Phá Ải 3</button>
           </article>
 
-          <!-- CARD 4 -->
+          <!-- CARD 4: WATER SORT (6 TUBES) -->
           <article class="game-card" data-game="watersort">
-            <div class="card-seal">Ải 4</div>
+            <div class="card-seal">Chòm Sao IV</div>
             <div class="card-icon-art">
               <svg viewBox="0 0 100 100" class="art-svg">
-                <rect x="20" y="25" width="14" height="55" rx="7" fill="none" stroke="#542817" stroke-width="3"/>
-                <path d="M22,50 h10 v23 a5,5 0 0,1 -10,0 z" fill="#b83b32"/>
-                <path d="M22,35 h10 v15 h-10 z" fill="#e8b042"/>
+                <rect x="18" y="22" width="16" height="58" rx="8" fill="rgba(255,255,255,0.08)" stroke="#e5c158" stroke-width="2.5"/>
+                <path d="M20,52 h12 v20 a6,6 0 0,1 -12,0 z" fill="#38bdf8"/>
+                <path d="M20,36 h12 v16 h-12 z" fill="#e5c158"/>
                 
-                <rect x="43" y="25" width="14" height="55" rx="7" fill="none" stroke="#542817" stroke-width="3"/>
-                <path d="M45,45 h10 v28 a5,5 0 0,1 -10,0 z" fill="#23495d"/>
-                <path d="M45,30 h10 v15 h-10 z" fill="#2b583f"/>
+                <rect x="42" y="22" width="16" height="58" rx="8" fill="rgba(255,255,255,0.08)" stroke="#e5c158" stroke-width="2.5"/>
+                <path d="M44,46 h12 v26 a6,6 0 0,1 -12,0 z" fill="#a855f7"/>
+                <path d="M44,30 h12 v16 h-12 z" fill="#10b981"/>
 
-                <rect x="66" y="25" width="14" height="55" rx="7" fill="none" stroke="#542817" stroke-width="3"/>
-                <path d="M68,55 h10 v18 a5,5 0 0,1 -10,0 z" fill="#e8b042"/>
+                <rect x="66" y="22" width="16" height="58" rx="8" fill="rgba(255,255,255,0.08)" stroke="#38bdf8" stroke-width="2.5"/>
+                <path d="M68,56 h12 v16 a6,6 0 0,1 -12,0 z" fill="#e5c158"/>
               </svg>
             </div>
             <div class="card-body">
-              <h3>PHÂN LOẠI NGŨ SẮC THỦY</h3>
-              <p>Rót và gom các lớp chất lỏng màu sắc vào đúng từng bình tre, tạo nên 6 bình màu thuần khiết.</p>
+              <h3>TINH CHẾ TINH VÂN</h3>
+              <p>Rót và hội tụ các dòng chảy ánh sao vào 6 ống pha lê sao cho mỗi ống ánh lên 1 sắc thái thuần khiết.</p>
               <div class="card-meta">
-                <span class="badge">6 Ống Màu • 8 Tầng</span>
-                <span class="badge-status" id="badge-watersort">Chưa xong</span>
+                <span class="badge">6 Ống Pha Lê</span>
+                <span class="badge-status" id="badge-watersort">Chưa mở</span>
               </div>
             </div>
-            <button class="folk-btn folk-btn-red play-trigger" data-target="watersort">Khởi Động Ải 4</button>
+            <button class="folk-btn folk-btn-gold play-trigger" data-target="watersort">✦ Khám Phá Ải 4</button>
           </article>
 
-          <!-- CARD 5 -->
+          <!-- CARD 5: UNBLOCK ROYAL VAULT -->
           <article class="game-card" data-game="unblock">
-            <div class="card-seal">Ải 5</div>
+            <div class="card-seal">Chòm Sao V</div>
             <div class="card-icon-art">
               <svg viewBox="0 0 100 100" class="art-svg">
-                <rect x="15" y="15" width="70" height="70" rx="6" fill="#e7d3a4" stroke="#542817" stroke-width="4"/>
-                <rect x="25" y="44" width="35" height="12" rx="3" fill="#b83b32" stroke="#542817" stroke-width="2"/>
-                <polygon points="65,50 60,46 60,54" fill="#ffd152"/>
-                <rect x="65" y="22" width="12" height="30" rx="3" fill="#8e5535" stroke="#542817" stroke-width="2"/>
-                <rect x="30" y="65" width="30" height="12" rx="3" fill="#542817" stroke="#33140a" stroke-width="2"/>
+                <rect x="14" y="14" width="72" height="72" rx="8" fill="#091326" stroke="#e5c158" stroke-width="3"/>
+                <rect x="22" y="43" width="38" height="14" rx="4" fill="#e5c158" stroke="#fff3b0" stroke-width="1.5"/>
+                <polygon points="70,50 63,45 63,55" fill="#38bdf8"/>
+                <rect x="64" y="20" width="12" height="32" rx="3" fill="#1e3a8a" stroke="#38bdf8" stroke-width="1.5"/>
+                <rect x="28" y="64" width="32" height="12" rx="3" fill="#1e293b" stroke="#94a3b8" stroke-width="1.5"/>
               </svg>
             </div>
             <div class="card-body">
-              <h3>GIẢI PHÓNG KHỐI MỘC ĐỎ</h3>
-              <p>Đẩy các thanh chốt gỗ cản đường để đưa thanh khối mộc màu đỏ thoát qua cửa ải thênh thang.</p>
+              <h3>KHAI MỞ CỔNG ÁNH SAO</h3>
+              <p>Trượt các thanh chắn thiên thạch để đưa Khối Tinh Cầu Hoàng Kim Tuổi 21 tiến ra Cổng Ánh Sao.</p>
               <div class="card-meta">
-                <span class="badge">Trí Uẩn Cổ Truyền</span>
-                <span class="badge-status" id="badge-unblock">Chưa xong</span>
+                <span class="badge">Mật Khóa Thiên Hà</span>
+                <span class="badge-status" id="badge-unblock">Chưa mở</span>
               </div>
             </div>
-            <button class="folk-btn folk-btn-red play-trigger" data-target="unblock">Khởi Động Ải 5</button>
+            <button class="folk-btn folk-btn-gold play-trigger" data-target="unblock">✦ Khám Phá Ải 5</button>
           </article>
         </div>
       </section>
@@ -228,32 +271,32 @@
         <div class="game-topbar">
           <button class="folk-btn folk-btn-secondary btn-back-hub">◀ Về Đại Sảnh</button>
           <div class="game-heading">
-            <h2>ẢI I: XẾP HÌNH MỘC BẢN (50 MẢNH)</h2>
-            <p>Nhìn tranh mẫu phía trên và ghép 50 mảnh tranh (10 cột × 5 hàng) phía dưới thành ảnh hoàn chỉnh</p>
+            <h2>ẢI I: KHUNG TRANH NGÂN HÀ (50 MẢNH)</h2>
+            <p>Quan sát bức ảnh kỷ niệm phía trên và ghép 50 mảnh pha lê (10 cột × 5 hàng) bên dưới</p>
           </div>
           <div class="game-actions">
-            <button id="btn-puzzle-reset" class="folk-btn folk-btn-secondary">Xáo Lại</button>
-            <button id="btn-puzzle-hint" class="folk-btn folk-btn-gold" title="Xem số thứ tự & ghép tự động 5 khối">💡 Gợi Ý (Hiện Số)</button>
+            <button id="btn-puzzle-reset" class="folk-btn folk-btn-secondary">🔄 Xáo Lại</button>
+            <button id="btn-puzzle-hint" class="folk-btn folk-btn-gold" title="Hiện số thứ tự & tự động ghép 5 mảnh">💡 Gợi Ý (+5 Mảnh)</button>
           </div>
         </div>
 
         <div class="puzzle-container">
           <div class="puzzle-stats-panel">
-            <div class="stat-item">Khối đúng vị trí: <strong id="puzzle-correct-count">0</strong> / 50</div>
-            <div class="stat-item">Số lần hoán đổi: <strong id="puzzle-move-count">0</strong></div>
-            <div class="hint-text">Mẹo: Bấm chọn 1 mảnh rồi bấm mảnh thứ 2 để hoán đổi cho nhau! (Hoặc kéo thả trực tiếp)</div>
+            <div class="stat-item">Mảnh đúng vị trí: <strong id="puzzle-correct-count">0</strong> / 50</div>
+            <div class="stat-item">Số bước hoán đổi: <strong id="puzzle-move-count">0</strong></div>
+            <div class="hint-text">✨ Mẹo: Chạm chọn 1 mảnh rồi chạm mảnh thứ 2 để đổi vị trí (hoặc kéo thả trực tiếp). Bấm "Gợi Ý" để tự ghép nhanh!</div>
           </div>
 
           <!-- TOP: COMPACT ELEGANT REFERENCE PICTURE -->
           <div class="puzzle-reference-card">
-            <div class="ref-title-badge">❖ BỨC TRANH MẪU HOÀN THIỆN ❖</div>
+            <div class="ref-title-badge">✦ KỶ NIỆM CỦA CHÚNG TA ✦</div>
             <div class="ref-image-box">
               <img src="birthday_photo.jpg" alt="Tranh mẫu hoàn thiện" id="puzzle-ref-img" class="puzzle-ref-img">
             </div>
           </div>
 
           <div class="puzzle-divider-label">
-            <span>▼ KHU VỰC GHÉP TRANH (50 KHỐI GỖ) ▼</span>
+            <span>▼ BÀN GHÉP PHA LÊ ÁNH SAO (50 MẢNH) ▼</span>
           </div>
 
           <!-- BOTTOM: PUZZLE TILES BOARD -->
@@ -270,49 +313,49 @@
         <div class="game-topbar">
           <button class="folk-btn folk-btn-secondary btn-back-hub">◀ Về Đại Sảnh</button>
           <div class="game-heading">
-            <h2>ẢI II: THÁP HÀ NỘI TỨ TẦNG (4 MẢNH)</h2>
-            <p>Chuyển toàn bộ 4 đĩa gốm từ Cột 1 sang Cột 3. Đĩa lớn không bao giờ được đặt lên đĩa nhỏ.</p>
+            <h2>ẢI II: THÁP THIÊN HÀ TỨ TẦNG</h2>
+            <p>Chuyển toàn bộ 4 đĩa ánh sáng từ Trụ 1 sang Trụ 3. Đĩa lớn không đặt lên đĩa nhỏ.</p>
           </div>
           <div class="game-actions">
             <button id="btn-hanoi-undo" class="folk-btn folk-btn-secondary">↩ Đi Lại</button>
-            <button id="btn-hanoi-reset" class="folk-btn folk-btn-secondary">Làm Mới</button>
-            <button id="btn-hanoi-autosolve" class="folk-btn folk-btn-gold" title="Trợ giúp tự động giải bước tiếp">💡 Bước Kế</button>
+            <button id="btn-hanoi-reset" class="folk-btn folk-btn-secondary">🔄 Làm Mới</button>
+            <button id="btn-hanoi-autosolve" class="folk-btn folk-btn-gold" title="Trợ giúp tự động đi bước tiếp theo">💡 Bước Kế Tiếp</button>
           </div>
         </div>
 
         <div class="hanoi-container">
           <div class="hanoi-stats">
-            <div>Số bước: <strong id="hanoi-move-count">0</strong></div>
-            <div>Tối thiểu: <strong>15 bước</strong> (2⁴ - 1)</div>
-            <div class="hint-text">Mẹo: Bấm vào cột để nhấc đĩa trên cùng, bấm cột tiếp theo để thả xuống!</div>
+            <div>Số bước đã đi: <strong id="hanoi-move-count">0</strong></div>
+            <div>Chuẩn tối ưu: <strong>15 bước</strong></div>
+            <div id="hanoi-feedback" class="hint-text">✨ Mẹo: Chạm vào trụ để nhấc đĩa trên cùng, chạm trụ tiếp theo để hạ đĩa xuống!</div>
           </div>
 
           <div class="hanoi-pegs-area" id="hanoi-board">
             <div class="hanoi-peg-col" data-peg="0">
-              <div class="peg-label">Khởi Nguyên (Cột 1)</div>
+              <div class="peg-label">Trụ Khởi Nguyên (I)</div>
               <div class="peg-stand">
                 <div class="peg-rod"></div>
                 <div class="peg-disks" id="peg-disks-0"></div>
               </div>
-              <button class="folk-btn folk-btn-peg" data-peg="0">Chọn / Thả Cột 1</button>
+              <button class="folk-btn folk-btn-peg" data-peg="0">Chọn / Thả Trụ I</button>
             </div>
 
             <div class="hanoi-peg-col" data-peg="1">
-              <div class="peg-label">Trung Gian (Cột 2)</div>
+              <div class="peg-label">Trụ Tinh Vân (II)</div>
               <div class="peg-stand">
                 <div class="peg-rod"></div>
                 <div class="peg-disks" id="peg-disks-1"></div>
               </div>
-              <button class="folk-btn folk-btn-peg" data-peg="1">Chọn / Thả Cột 2</button>
+              <button class="folk-btn folk-btn-peg" data-peg="1">Chọn / Thả Trụ II</button>
             </div>
 
             <div class="hanoi-peg-col" data-peg="2">
-              <div class="peg-label">Đích Thọ Khang (Cột 3)</div>
+              <div class="peg-label">Trụ Hoàng Kim (III)</div>
               <div class="peg-stand">
                 <div class="peg-rod"></div>
                 <div class="peg-disks" id="peg-disks-2"></div>
               </div>
-              <button class="folk-btn folk-btn-peg" data-peg="2">Chọn / Thả Cột 3</button>
+              <button class="folk-btn folk-btn-peg" data-peg="2">Chọn / Thả Trụ III</button>
             </div>
           </div>
         </div>
@@ -323,20 +366,20 @@
         <div class="game-topbar">
           <button class="folk-btn folk-btn-secondary btn-back-hub">◀ Về Đại Sảnh</button>
           <div class="game-heading">
-            <h2>ẢI III: CỬU ĐĂNG TỎA SÁNG (3x3)</h2>
-            <p>Bấm một lồng đèn sẽ đổi trạng thái (bật/tắt) của chính nó và 4 đèn lân cận. Làm sáng cả 9 đèn!</p>
+            <h2>ẢI III: THẮP SÁNG CHÒM SAO (3×3)</h2>
+            <p>Chạm vào 1 ngôi sao sẽ đảo trạng thái sáng/tối của chính nó và 4 ngôi sao liền kề. Hãy thắp sáng cả 9 ngôi sao!</p>
           </div>
           <div class="game-actions">
-            <button id="btn-lights-reset" class="folk-btn folk-btn-secondary">Xếp Lại Đèn</button>
+            <button id="btn-lights-reset" class="folk-btn folk-btn-secondary">🔄 Xếp Lại Sao</button>
             <button id="btn-lights-hint" class="folk-btn folk-btn-gold">💡 Gợi Ý Bước Đi</button>
           </div>
         </div>
 
         <div class="lights-container">
           <div class="lights-stats">
-            <div>Đèn đang sáng: <strong id="lights-on-count">0</strong> / 9</div>
+            <div>Sao đang tỏa sáng: <strong id="lights-on-count">0</strong> / 9</div>
             <div>Số lần chạm: <strong id="lights-moves">0</strong></div>
-            <div class="hint-text">Mục tiêu: Đưa toàn bộ 9 lồng đèn sang sắc vàng rực rỡ để chiếu rọi phúc khí!</div>
+            <div class="hint-text">✨ Mục tiêu: Kết nối toàn bộ 9 ngôi sao Bắc Đẩu rực sáng ánh vàng kim!</div>
           </div>
 
           <div class="lights-board-frame">
@@ -345,75 +388,74 @@
             <div class="frame-corner bottom-left"></div>
             <div class="frame-corner bottom-right"></div>
             <div id="lights-board" class="lights-board">
-              <!-- 9 lights cells generated here -->
+              <!-- 9 star cells generated here -->
             </div>
           </div>
         </div>
       </section>
 
-      <!-- ================= GAME 4: WATER SORT (6 COLORS, 8 TUBES) ================= -->
+      <!-- ================= GAME 4: WATER SORT (6 TUBES TOTAL: 4 COLORS + 2 EMPTY) ================= -->
       <section id="screen-game-watersort" class="screen">
         <div class="game-topbar">
           <button class="folk-btn folk-btn-secondary btn-back-hub">◀ Về Đại Sảnh</button>
           <div class="game-heading">
-            <h2>ẢI IV: PHÂN LOẠI NGŨ SẮC THỦY</h2>
-            <p>Rót chất lỏng giữa các ống gốm sao cho mỗi ống chỉ chứa 1 màu duy nhất (mỗi ống chứa 8 phân đoạn chất lỏng)</p>
+            <h2>ẢI IV: TINH CHẾ TINH VÂN (6 ỐNG PHA LÊ)</h2>
+            <p>Rót dòng chảy ánh sao giữa 6 ống pha lê sao cho 4 ống chứa 4 sắc tinh vân đồng nhất</p>
           </div>
           <div class="game-actions">
             <button id="btn-water-undo" class="folk-btn folk-btn-secondary">↩ Đi Lại</button>
-            <button id="btn-water-reset" class="folk-btn folk-btn-secondary">Rót Lại Từ Đầu</button>
+            <button id="btn-water-reset" class="folk-btn folk-btn-secondary">🔄 Rót Lại</button>
+            <button id="btn-water-hint" class="folk-btn folk-btn-gold">💡 Gợi Ý Rót</button>
           </div>
         </div>
 
         <div class="watersort-container">
           <div class="watersort-stats">
-            <div>Ống hoàn thiện: <strong id="water-completed-tubes">0</strong> / 6</div>
+            <div>Ống hoàn thiện: <strong id="water-completed-tubes">0</strong> / 4</div>
+            <div>Tổng số ống: <strong>6 Ống</strong></div>
             <div>Số bước rót: <strong id="water-move-count">0</strong></div>
-            <div class="hint-text">Quy tắc: Chỉ được rót màu giống nhau lên nhau, hoặc rót vào ống trống. Ống có dung tích tối đa 8 tầng màu.</div>
+            <div class="hint-text">✨ Quy tắc: Chỉ rót được các tầng tinh vân cùng màu lên nhau hoặc rót vào ống pha lê trống.</div>
           </div>
 
-          <div id="watersort-tubes-area" class="tubes-grid">
-            <!-- 8 tubes (6 colored mixed + 2 empty buffer tubes) -->
+          <div id="watersort-tubes-area" class="tubes-grid tubes-grid-6">
+            <!-- 6 tubes (4 colored mixed + 2 empty buffer tubes) -->
           </div>
         </div>
       </section>
 
-      <!-- ================= GAME 5: UNBLOCK WOOD (UPGRADED AUTHENTIC LACQUERWARE) ================= -->
+      <!-- ================= GAME 5: UNBLOCK ROYAL VAULT ================= -->
       <section id="screen-game-unblock" class="screen">
         <div class="game-topbar">
           <button class="folk-btn folk-btn-secondary btn-back-hub">◀ Về Đại Sảnh</button>
           <div class="game-heading">
-            <h2>ẢI V: GIẢI PHÓNG KHỐI MỘC ĐỎ</h2>
-            <p>Trượt các thanh chốt gỗ xung quanh để mở lối, đưa Khối Mộc Đỏ Sơn Mài (hàng 3) thoát qua Cổng Thoát!</p>
+            <h2>ẢI V: KHAI MỞ CỔNG ÁNH SAO</h2>
+            <p>Trượt các thanh chắn thiên thạch để mở đường đưa Khối Tinh Cầu Tuổi 21 thoát ra Cổng Ánh Sao bên phải!</p>
           </div>
           <div class="game-actions">
-            <button id="btn-unblock-reset" class="folk-btn folk-btn-secondary">Xếp Lại Gỗ</button>
-            <button id="btn-unblock-hint" class="folk-btn folk-btn-gold">💡 Gợi Ý Di Chuyển</button>
+            <button id="btn-unblock-reset" class="folk-btn folk-btn-secondary">🔄 Xếp Lại</button>
+            <button id="btn-unblock-hint" class="folk-btn folk-btn-gold">💡 Gợi Ý Mở Đường</button>
           </div>
         </div>
 
         <div class="unblock-container">
           <div class="unblock-stats">
             <div>Số bước trượt: <strong id="unblock-move-count">0</strong></div>
-            <div class="hint-text">Khối ngang trượt ngang, khối dọc trượt dọc. Đưa khối đỏ sang mép phải để chiến thắng!</div>
+            <div class="hint-text">✨ Khối ngang trượt ngang, khối dọc trượt dọc. Đưa Khối Hoàng Kim Tuổi 21 ra Cổng Ánh Sao!</div>
           </div>
 
-          <!-- UPGRADED LUXURY WOOD TRAY WITH BRASS HARDWARE -->
           <div class="unblock-frame-outer">
-            <!-- Brass corner ornaments -->
-            <div class="brass-corner corner-tl">❖</div>
-            <div class="brass-corner corner-tr">❖</div>
-            <div class="brass-corner corner-bl">❖</div>
-            <div class="brass-corner corner-br">❖</div>
+            <div class="brass-corner corner-tl">✦</div>
+            <div class="brass-corner corner-tr">✦</div>
+            <div class="brass-corner corner-bl">✦</div>
+            <div class="brass-corner corner-br">✦</div>
 
             <div class="unblock-board-wrap">
               <div id="unblock-board" class="unblock-board">
                 <!-- 6x6 grid with blocks -->
               </div>
-              <!-- Grand Traditional Exit Gate -->
               <div class="exit-gate-sign">
                 <span class="gate-icon">➔</span>
-                <span class="gate-text">CỬA THOÁT</span>
+                <span class="gate-text">CỔNG SAO</span>
                 <span class="gate-glow"></span>
               </div>
             </div>
@@ -421,106 +463,243 @@
         </div>
       </section>
 
-      <!-- ================= GRAND FINALE: BIRTHDAY CAKE & VOICE AUDIO ================= -->
+      <!-- ================= GRAND FINALE: ROYAL 21st BIRTHDAY CAKE & VOICE AUDIO ================= -->
       <section id="screen-grand-finale" class="screen">
         <div class="finale-curtain">
+          <!-- Floating Wishing Lanterns / Stars Container -->
+          <div id="wishing-stars-container" class="wishing-stars-container"></div>
+
           <div class="finale-header">
-            <div class="royal-seal-badge">NGŨ PHÚC ĐỒNG QUY • THÀNH CÔNG RỰC RỠ</div>
-            <h2 class="congrats-title">CHÚC MỪNG SINH NHẬT!</h2>
-            <p class="congrats-desc">Bạn đã hoàn thành trọn vẹn 5 thử thách! Chiếc bánh sinh nhật cát tường đã bừng sáng!</p>
+            <div class="royal-seal-badge">✦ TÌNH YÊU NHƯ SAO TRÊN BẦU TRỜI ĐÊM • TUỔI 21 ✦</div>
+            <h2 class="congrats-title">CHÚC MỪNG SINH NHẬT 21 TUỔI!</h2>
+            <p class="finale-love-subtitle">LOVE YOU, Babe! ❤️</p>
+            <p class="congrats-desc">5 Chòm Sao đã hội tụ! Hãy lắng nghe lời chúc, ước một điều thật đẹp cho tuổi 21 và thổi tắt ngọn nến hoàng kim!</p>
           </div>
 
-          <!-- ASSEMBLED CAKE INTERACTIVE STAGE -->
+          <!-- ASSEMBLED LUXURY CAKE INTERACTIVE STAGE -->
           <div class="cake-assembly-stage cake-assembly-centered">
             <div class="cake-pedestal">
               
-              <!-- Traditional Grand Cake SVG Art -->
+              <!-- Ambient Halo Behind Cake -->
+              <div class="cake-celestial-halo"></div>
+
+              <!-- Luxury Midnight & 24K Gold 21st Birthday Cake SVG Art -->
               <div class="folk-cake-wrapper" id="cake-display">
-                <svg viewBox="0 0 360 420" class="folk-cake-svg">
+                <svg viewBox="0 0 400 470" class="folk-cake-svg">
                   <defs>
-                    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stop-color="#fff0aa"/>
-                      <stop offset="50%" stop-color="#e8b042"/>
-                      <stop offset="100%" stop-color="#9d6718"/>
+                    <!-- Rich 24K Champagne Gold Gradient -->
+                    <linearGradient id="royalGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#fff8d6"/>
+                      <stop offset="30%" stop-color="#f5d77f"/>
+                      <stop offset="65%" stop-color="#d4af37"/>
+                      <stop offset="100%" stop-color="#8a640f"/>
                     </linearGradient>
-                    <linearGradient id="crimsonGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                      <stop offset="0%" stop-color="#cf443b"/>
-                      <stop offset="100%" stop-color="#801c15"/>
+
+                    <!-- Brushed Platinum / Silver Starlight Gradient -->
+                    <linearGradient id="platinumGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#ffffff"/>
+                      <stop offset="50%" stop-color="#e2e8f0"/>
+                      <stop offset="100%" stop-color="#94a3b8"/>
                     </linearGradient>
-                    <filter id="folkGlow" x="-20%" y="-20%" width="140%" height="140%">
-                      <feGaussianBlur stdDeviation="5" result="blur"/>
+
+                    <!-- Deep Midnight Velvet Tier Gradient -->
+                    <linearGradient id="midnightVelvetGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stop-color="#071026"/>
+                      <stop offset="30%" stop-color="#11224d"/>
+                      <stop offset="50%" stop-color="#1d3673"/>
+                      <stop offset="70%" stop-color="#11224d"/>
+                      <stop offset="100%" stop-color="#060c1f"/>
+                    </linearGradient>
+
+                    <!-- Royal Sapphire Glaze Gradient -->
+                    <linearGradient id="sapphireGlazeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#1e3a8a"/>
+                      <stop offset="50%" stop-color="#0f172a"/>
+                      <stop offset="100%" stop-color="#090d16"/>
+                    </linearGradient>
+
+                    <!-- Champagne Cream Tier Gradient -->
+                    <linearGradient id="champagneCreamGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stop-color="#d8cbb8"/>
+                      <stop offset="25%" stop-color="#f7f2e7"/>
+                      <stop offset="50%" stop-color="#ffffff"/>
+                      <stop offset="75%" stop-color="#f7f2e7"/>
+                      <stop offset="100%" stop-color="#cbbba2"/>
+                    </linearGradient>
+
+                    <!-- Candle Flame Outer Glow -->
+                    <radialGradient id="flameAura" cx="50%" cy="50%" r="50%">
+                      <stop offset="0%" stop-color="rgba(255, 220, 100, 0.85)"/>
+                      <stop offset="50%" stop-color="rgba(255, 140, 20, 0.35)"/>
+                      <stop offset="100%" stop-color="rgba(255, 100, 0, 0)"/>
+                    </radialGradient>
+
+                    <filter id="celestialGlow" x="-30%" y="-30%" width="160%" height="160%">
+                      <feGaussianBlur stdDeviation="6" result="blur"/>
                       <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+                    </filter>
+
+                    <filter id="softShadow" x="-15%" y="-15%" width="130%" height="130%">
+                      <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#000000" flood-opacity="0.55"/>
                     </filter>
                   </defs>
 
-                  <!-- Tier 1: Pedestal (Mảnh 1) -->
-                  <g id="cake-part-1" class="cake-layer layer-pedestal">
-                    <ellipse cx="180" cy="380" rx="160" ry="25" fill="#542817"/>
-                    <path d="M30,370 C30,370 70,395 180,395 C290,395 330,370 330,370 L320,400 C320,400 270,415 180,415 C90,415 40,400 40,400 Z" fill="#3a1b0f"/>
-                    <path d="M60,375 Q75,360 90,375 Q105,360 120,375 Q135,360 150,375 Q165,360 180,375 Q195,360 210,375 Q225,360 240,375 Q255,360 270,375 Q285,360 300,375" fill="none" stroke="#e8b042" stroke-width="3"/>
+                  <!-- ================= TIER 1: ROYAL CRYSTAL & GOLD PEDESTAL (Mảnh 1) ================= -->
+                  <g id="cake-part-1" class="cake-layer layer-pedestal" filter="url(#softShadow)">
+                    <!-- Base Stand Foot -->
+                    <path d="M130,445 L270,445 L245,418 L155,418 Z" fill="url(#royalGoldGrad)"/>
+                    <ellipse cx="200" cy="445" rx="75" ry="9" fill="url(#royalGoldGrad)" stroke="#fff8d6" stroke-width="1"/>
+                    <!-- Pedestal Pillar -->
+                    <rect x="172" y="402" width="56" height="20" rx="6" fill="url(#royalGoldGrad)"/>
+                    <!-- Main Platter Rim -->
+                    <ellipse cx="200" cy="396" rx="170" ry="24" fill="#091326" stroke="url(#royalGoldGrad)" stroke-width="4"/>
+                    <ellipse cx="200" cy="392" rx="162" ry="20" fill="url(#royalGoldGrad)"/>
+                    <ellipse cx="200" cy="390" rx="150" ry="16" fill="#0d1b3a"/>
+                    <!-- Filigree Gold Scallops on Pedestal -->
+                    <path d="M48,396 Q75,412 102,396 Q129,412 156,396 Q183,412 200,396 Q217,412 244,396 Q271,412 298,396 Q325,412 352,396" fill="none" stroke="#fff8d6" stroke-width="2" opacity="0.85"/>
                   </g>
 
-                  <!-- Tier 2: Base Tier (Mảnh 2) -->
-                  <g id="cake-part-2" class="cake-layer layer-base">
-                    <rect x="55" y="270" width="250" height="90" rx="16" fill="url(#crimsonGrad)" stroke="#542817" stroke-width="4"/>
-                    <path d="M60,300 Q90,320 120,300 T180,300 T240,300 T300,300" fill="none" stroke="url(#goldGrad)" stroke-width="4"/>
-                    <circle cx="100" cy="335" r="8" fill="#e8b042"/>
-                    <circle cx="140" cy="335" r="8" fill="#e8b042"/>
-                    <circle cx="180" cy="335" r="12" fill="#fff" stroke="#e8b042" stroke-width="3"/>
-                    <text x="180" y="340" font-size="11" text-anchor="middle" fill="#801c15" font-weight="bold">THỌ</text>
-                    <circle cx="220" cy="335" r="8" fill="#e8b042"/>
-                    <circle cx="260" cy="335" r="8" fill="#e8b042"/>
+                  <!-- ================= TIER 2: GRAND MIDNIGHT CONSTELLATION BASE TIER (Mảnh 2) ================= -->
+                  <g id="cake-part-2" class="cake-layer layer-base" filter="url(#softShadow)">
+                    <!-- Bottom Gold Molding -->
+                    <ellipse cx="200" cy="384" rx="138" ry="15" fill="url(#royalGoldGrad)"/>
+                    <!-- Cylinder Body -->
+                    <path d="M64,278 L64,380 A136,15 0 0,0 336,380 L336,278 Z" fill="url(#midnightVelvetGrad)" stroke="url(#royalGoldGrad)" stroke-width="2.5"/>
+                    <!-- Top Ellipse of Base Tier -->
+                    <ellipse cx="200" cy="278" rx="136" ry="15" fill="#172e66" stroke="url(#royalGoldGrad)" stroke-width="2"/>
+
+                    <!-- Golden Drapery Swags & Constellation Lines -->
+                    <path d="M64,302 Q110,334 155,302 Q200,336 245,302 Q290,334 336,302" fill="none" stroke="url(#royalGoldGrad)" stroke-width="3"/>
+                    <path d="M64,310 Q110,342 155,310 Q200,344 245,310 Q290,342 336,310" fill="none" stroke="#38bdf8" stroke-width="1" stroke-dasharray="3,3" opacity="0.8"/>
+
+                    <!-- Starlight Pearls along Base -->
+                    <circle cx="95" cy="352" r="4" fill="#fff8d6"/>
+                    <circle cx="130" cy="356" r="3" fill="#38bdf8"/>
+                    <circle cx="270" cy="356" r="3" fill="#38bdf8"/>
+                    <circle cx="305" cy="352" r="4" fill="#fff8d6"/>
+
+                    <!-- Crescent Moon & Stars on Left/Right -->
+                    <path d="M112,332 A10,10 0 1,1 112,350 A7,7 0 1,0 112,332 Z" fill="url(#royalGoldGrad)"/>
+                    <path d="M288,332 A10,10 0 1,0 288,350 A7,7 0 1,1 288,332 Z" fill="url(#royalGoldGrad)"/>
+
+                    <!-- Center Royal Plaque: "HAPPY 21st" -->
+                    <rect x="144" y="324" width="112" height="36" rx="18" fill="#071026" stroke="url(#royalGoldGrad)" stroke-width="2.5"/>
+                    <text x="200" y="346" font-family="Cinzel, serif" font-size="13" text-anchor="middle" fill="#fff8d6" font-weight="800" letter-spacing="1.5">TUỔI • 21 </text>
                   </g>
 
-                  <!-- Tier 3: Middle Tier (Mảnh 3) -->
-                  <g id="cake-part-3" class="cake-layer layer-middle">
-                    <rect x="90" y="195" width="180" height="80" rx="14" fill="#f4ebd9" stroke="#542817" stroke-width="4"/>
-                    <circle cx="180" cy="235" r="18" fill="#b83b32"/>
-                    <text x="180" y="241" font-size="15" text-anchor="middle" fill="#fff" font-weight="bold">PHÚC</text>
-                    <path d="M120,235 C135,215 145,255 160,235" fill="none" stroke="#2b583f" stroke-width="3"/>
-                    <path d="M200,235 C215,215 225,255 240,235" fill="none" stroke="#2b583f" stroke-width="3"/>
+                  <!-- ================= TIER 3: CHAMPAGNE PLATINUM MIDDLE TIER (Mảnh 3) ================= -->
+                  <g id="cake-part-3" class="cake-layer layer-middle" filter="url(#softShadow)">
+                    <!-- Gold Base Bead Ring -->
+                    <ellipse cx="200" cy="276" rx="104" ry="12" fill="url(#royalGoldGrad)"/>
+                    <!-- Cylinder Body -->
+                    <path d="M98,188 L98,272 A102,12 0 0,0 302,272 L302,188 Z" fill="url(#champagneCreamGrad)" stroke="url(#royalGoldGrad)" stroke-width="2.5"/>
+                    <!-- Top Surface -->
+                    <ellipse cx="200" cy="188" rx="102" ry="12" fill="#ffffff" stroke="url(#royalGoldGrad)" stroke-width="2"/>
+
+                    <!-- Diamond Quilted Gold Lattice Lines -->
+                    <path d="M115,198 L145,268 M145,198 L115,268 M255,198 L285,268 M285,198 L255,268" stroke="#d4af37" stroke-width="1.2" opacity="0.55"/>
+
+                    <!-- Center Royal Medallion "LOVE YOU" -->
+                    <ellipse cx="200" cy="232" rx="46" ry="22" fill="#091326" stroke="url(#royalGoldGrad)" stroke-width="3"/>
+                    <text x="200" y="230" font-family="Cinzel, serif" font-size="10" text-anchor="middle" fill="#f5d77f" font-weight="800" letter-spacing="1">LOVE YOU</text>
+                    <text x="200" y="243" font-family="Playfair Display, serif" font-style="italic" font-size="10" text-anchor="middle" fill="#38bdf8" font-weight="700">Babe Sơn ★</text>
                   </g>
 
-                  <!-- Tier 4: Top Tier Frosting (Mảnh 4) -->
-                  <g id="cake-part-4" class="cake-layer layer-top">
-                    <rect x="120" y="130" width="120" height="70" rx="12" fill="url(#crimsonGrad)" stroke="#542817" stroke-width="4"/>
-                    <path d="M120,150 Q135,165 150,150 Q165,165 180,150 Q195,165 210,150 Q225,165 240,150" fill="none" stroke="#fff0aa" stroke-width="5" stroke-linecap="round"/>
-                    <ellipse cx="180" cy="130" rx="60" ry="12" fill="#fff0aa" stroke="#542817" stroke-width="3"/>
+                  <!-- ================= TIER 4: CROWN SAPPHIRE & GOLD DRIP TOP TIER (Mảnh 4) ================= -->
+                  <g id="cake-part-4" class="cake-layer layer-top" filter="url(#softShadow)">
+                    <!-- Gold Cushion Ring -->
+                    <ellipse cx="200" cy="186" rx="74" ry="9" fill="url(#royalGoldGrad)"/>
+                    <!-- Top Tier Cylinder -->
+                    <path d="M128,118 L128,183 A72,9 0 0,0 272,183 L272,118 Z" fill="url(#sapphireGlazeGrad)" stroke="url(#royalGoldGrad)" stroke-width="2.5"/>
+                    
+                    <!-- Luxury 24K Gold Ganache Drip -->
+                    <path d="M128,120 
+                             Q136,142 144,124 
+                             Q152,152 160,124 
+                             Q170,138 178,124 
+                             Q188,156 198,124 
+                             Q208,144 218,124 
+                             Q228,154 238,124 
+                             Q248,140 256,124 
+                             Q264,146 272,120 
+                             L272,118 L128,118 Z" fill="url(#royalGoldGrad)"/>
+
+                    <!-- Top Crown Surface -->
+                    <ellipse cx="200" cy="118" rx="72" ry="10" fill="url(#royalGoldGrad)" stroke="#fff8d6" stroke-width="2"/>
+                    <ellipse cx="200" cy="118" rx="60" ry="7" fill="#0d1b3a"/>
+
+                    <!-- Decorative Starbursts on Top Tier -->
+                    <polygon points="200,152 203,160 211,160 205,165 207,173 200,168 193,173 195,165 189,160 197,160" fill="url(#royalGoldGrad)"/>
+                    <circle cx="156" cy="162" r="3.5" fill="#fff8d6"/>
+                    <circle cx="244" cy="162" r="3.5" fill="#fff8d6"/>
                   </g>
 
-                  <!-- Tier 5: Birthday Candles with Animated Flames (Mảnh 5) -->
+                  <!-- ================= TIER 5: SCULPTED GOLD "21" CANDLES & FLAMES (Mảnh 5) ================= -->
                   <g id="cake-part-5" class="cake-layer layer-candles">
-                    <!-- Left Candle -->
-                    <rect x="145" y="85" width="12" height="45" rx="3" fill="#e8b042" stroke="#542817" stroke-width="2"/>
-                    <line x1="151" y1="85" x2="151" y2="75" stroke="#333" stroke-width="2"/>
-                    <path class="flame flame-1" d="M151,75 C146,65 146,55 151,45 C156,55 156,65 151,75 Z" fill="#ff7a00" filter="url(#folkGlow)"/>
-                    <path class="flame-inner" d="M151,73 C148,65 148,58 151,50 C154,58 154,65 151,73 Z" fill="#fff799"/>
+                    <!-- Candle Base Holders -->
+                    <ellipse cx="176" cy="117" rx="16" ry="4" fill="url(#platinumGrad)"/>
+                    <ellipse cx="224" cy="117" rx="16" ry="4" fill="url(#platinumGrad)"/>
 
-                    <!-- Center Grand Candle -->
-                    <rect x="174" y="70" width="14" height="60" rx="3" fill="#b83b32" stroke="#542817" stroke-width="2"/>
-                    <line x1="181" y1="70" x2="181" y2="58" stroke="#333" stroke-width="2"/>
-                    <path class="flame flame-2" d="M181,58 C174,45 174,32 181,20 C188,32 188,45 181,58 Z" fill="#ff4d00" filter="url(#folkGlow)"/>
-                    <path class="flame-inner" d="M181,56 C177,46 177,36 181,27 C185,36 185,46 181,56 Z" fill="#ffff88"/>
+                    <!-- Sculpted Number "2" Candle -->
+                    <g class="candle-num-2">
+                      <path d="M160,76 C160,62 190,62 190,78 C190,90 164,98 162,108 L192,108 L192,116 L156,116 L156,107 C158,94 180,86 180,77 C180,71 169,71 168,78 Z" 
+                            fill="url(#royalGoldGrad)" stroke="#fff8d6" stroke-width="2" filter="url(#softShadow)"/>
+                      <!-- Wick for "2" -->
+                      <line x1="175" y1="64" x2="175" y2="54" stroke="#e2e8f0" stroke-width="2.5" stroke-linecap="round"/>
+                    </g>
 
-                    <!-- Right Candle -->
-                    <rect x="203" y="85" width="12" height="45" rx="3" fill="#2b583f" stroke="#542817" stroke-width="2"/>
-                    <line x1="209" y1="85" x2="209" y2="75" stroke="#333" stroke-width="2"/>
-                    <path class="flame flame-3" d="M209,75 C204,65 204,55 209,45 C214,55 214,65 209,75 Z" fill="#ff7a00" filter="url(#folkGlow)"/>
-                    <path class="flame-inner" d="M209,73 C206,65 206,58 209,50 C212,58 212,65 209,73 Z" fill="#fff799"/>
+                    <!-- Sculpted Number "1" Candle -->
+                    <g class="candle-num-1">
+                      <path d="M214,72 L226,64 L226,108 L234,108 L234,116 L210,116 L210,108 L217,108 L217,76 L211,80 Z" 
+                            fill="url(#royalGoldGrad)" stroke="#fff8d6" stroke-width="2" filter="url(#softShadow)"/>
+                      <!-- Wick for "1" -->
+                      <line x1="222" y1="64" x2="222" y2="54" stroke="#e2e8f0" stroke-width="2.5" stroke-linecap="round"/>
+                    </g>
+
+                    <!-- FLAME 1 (Above Number 2) -->
+                    <g class="candle-flame-group" id="flame-group-1">
+                      <circle class="flame-halo" cx="175" cy="40" r="26" fill="url(#flameAura)"/>
+                      <path class="flame flame-1" d="M175,55 C166,42 167,26 175,12 C183,26 184,42 175,55 Z" fill="#ff8c00" filter="url(#celestialGlow)"/>
+                      <path class="flame flame-2" d="M175,53 C169,43 170,30 175,20 C180,30 181,43 175,53 Z" fill="#ffd700"/>
+                      <path class="flame-inner" d="M175,51 C172,44 172,36 175,29 C178,36 178,44 175,51 Z" fill="#ffffff"/>
+                    </g>
+
+                    <!-- FLAME 2 (Above Number 1) -->
+                    <g class="candle-flame-group" id="flame-group-2">
+                      <circle class="flame-halo" cx="222" cy="40" r="26" fill="url(#flameAura)"/>
+                      <path class="flame flame-3" d="M222,55 C213,42 214,26 222,12 C230,26 231,42 222,55 Z" fill="#ff8c00" filter="url(#celestialGlow)"/>
+                      <path class="flame flame-1" d="M222,53 C216,43 217,30 222,20 C227,30 228,43 222,53 Z" fill="#ffd700"/>
+                      <path class="flame-inner" d="M222,51 C219,44 219,36 222,29 C225,36 225,44 222,51 Z" fill="#ffffff"/>
+                    </g>
+
+                    <!-- Smoke Wisps (Hidden until candles blown) -->
+                    <g id="candle-smoke-group" class="candle-smoke-group hidden">
+                      <path class="smoke-path smoke-1" d="M175,52 Q168,38 178,25 T172,2" fill="none" stroke="rgba(226,232,240,0.75)" stroke-width="2.5" stroke-linecap="round"/>
+                      <path class="smoke-path smoke-2" d="M222,52 Q230,38 218,25 T226,2" fill="none" stroke="rgba(226,232,240,0.75)" stroke-width="2.5" stroke-linecap="round"/>
+                    </g>
                   </g>
                 </svg>
               </div>
 
-              <!-- Audio visual indicator and Controls -->
-              <div class="audio-playing-indicator" id="audio-status-box">
-                <span class="music-wave-icon">🔊 🎶</span>
+              <!-- Golden Voice Audio Visualizer & Status -->
+              <div class="audio-visualizer-box" id="audio-status-box">
+                <div class="wave-bars" id="voice-wave-bars">
+                  <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
                 <span id="audio-status-text">Đang phát lời chúc sinh nhật...</span>
               </div>
 
+              <!-- Wish Message Toast when clicking floating lanterns/stars -->
+              <div id="wish-star-toast" class="wish-star-toast">
+                ✨ Chạm vào những ngôi sao ước nguyện đang bay lên hoặc thổi vào Micro để tắt nến!
+              </div>
+
               <div class="cake-controls">
-                <button id="btn-replay-voice" class="folk-btn folk-btn-gold">▶ Phát Lại Lời Chúc Âm Thanh</button>
-                <button id="btn-blow-candles" class="folk-btn folk-btn-red">🎂 Thổi Nến Ước Nguyện</button>
-                <button class="folk-btn folk-btn-secondary btn-back-hub">◀ Xem Lại Các Ải</button>
+                <button id="btn-blow-candles" class="folk-btn folk-btn-gold">🎂 Thổi Nến Ước Nguyện Tuổi 21</button>
+                <button id="btn-mic-blow" class="folk-btn folk-btn-sapphire">🎤 Thổi Nến Bằng Hơi Thở (Mic)</button>
+                <button id="btn-replay-voice" class="folk-btn folk-btn-secondary">▶ Nghe Lại Lời Chúc</button>
+                <button id="btn-spawn-lantern" class="folk-btn folk-btn-secondary">✨ Thả Sao Ước Nguyện</button>
+                <button class="folk-btn folk-btn-secondary btn-back-hub">◀ Về Đại Sảnh</button>
               </div>
             </div>
           </div>
@@ -532,14 +711,14 @@
     <!-- CELEBRATION MODAL FOR EACH COMPLETED CHALLENGE -->
     <div id="modal-fragment-reward" class="modal-backdrop hidden">
       <div class="modal-card folk-modal bounce-in">
-        <div class="modal-seal-badge">CHÚC MỪNG CHIẾN THẮNG</div>
-        <h3 id="reward-title">BẠN ĐÃ ĐOẠT ĐƯỢC MẢNH GHÉP!</h3>
+        <div class="modal-seal-badge">✦ CHÒM SAO KHAI MỞ ✦</div>
+        <h3 id="reward-title">TINH CẦU ĐÃ ĐƯỢC THU THẬP!</h3>
         <div class="reward-icon-display">
           <div id="reward-fragment-visual" class="reward-visual"></div>
         </div>
-        <p id="reward-desc">Một mảnh của Chiếc Bánh Sinh Nhật Cát Tường đã quy về vị trí.</p>
+        <p id="reward-desc">Một mảnh ghép của Chiếc Bánh Sinh Nhật Tình Yêu Tuổi 21 đã tỏa sáng.</p>
         <div class="modal-buttons">
-          <button id="btn-continue-journey" class="folk-btn folk-btn-gold">Tiếp Tục Chinh Phục</button>
+          <button id="btn-continue-journey" class="folk-btn folk-btn-gold">✦ Tiếp Tục Hành Trình</button>
         </div>
       </div>
     </div>

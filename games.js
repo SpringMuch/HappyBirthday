@@ -1,10 +1,10 @@
 /**
- * Mini-Games Implementation for Ngũ Phúc Kỳ Duyên
- * 1. Jigsaw 50 Tiles (100% Local file:/// compatible, CSS Sliced, Instant Render)
- * 2. Tower of Hanoi (7 disks)
- * 3. Lights Out (3x3)
- * 4. Water Sort (6 colors, 8 units each, 8 tubes)
- * 5. Unblock Wood (Luxury Vietnamese Lacquerware & Rosewood Theme)
+ * Mini-Games Implementation for Đêm Sao Hoàng Kim • Tuổi 21
+ * 1. Jigsaw 50 Tiles (10x5, birthday_photo.jpg, Stardust Snap Effects)
+ * 2. Tower of Hanoi (4 Celestial Energy Disks, Smooth Feedback)
+ * 3. Lights Out (3x3 North Star Constellation Matrix)
+ * 4. Water Sort (6 Crystal Tubes total: 4 Nebula Colors + 2 Empty Tubes, Smart Hint)
+ * 5. Unblock Royal Vault (Obsidian & 24K Gold Age 21 Astral Block)
  */
 
 /* ============================================================
@@ -43,16 +43,10 @@ class JigsawPuzzleGame {
     const btnHint = document.getElementById('btn-puzzle-hint');
     if (btnHint) {
       btnHint.onclick = () => {
-        window.folkAudio.playChime(650, 0.4);
-        this.showNumbers = !this.showNumbers;
-        if (this.showNumbers) {
-          this.container.classList.add('show-numbers');
-          btnHint.textContent = '💡 Ẩn Số & Trợ Giúp';
-        } else {
-          this.container.classList.remove('show-numbers');
-          btnHint.textContent = '💡 Gợi Ý (Hiện Số)';
-        }
-        // Auto-place 5 misplaced tiles into correct positions
+        window.folkAudio.playChime(650, 0.45);
+        this.showNumbers = true;
+        this.container?.classList.add('show-numbers');
+        // Auto-place 5 misplaced tiles into correct positions each click
         this.autoHelpPieces(5);
       };
     }
@@ -63,16 +57,13 @@ class JigsawPuzzleGame {
     this.selectedIndex = null;
     this.isWon = false;
 
-    // Create 0..49 order
     const order = Array.from({ length: this.total }, (_, i) => i);
 
-    // Shuffle with Fisher-Yates
     for (let i = order.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [order[i], order[j]] = [order[j], order[i]];
     }
 
-    // Map into current pieces array
     this.pieces = order.map((origIdx, currentIdx) => ({
       originalIndex: origIdx,
       currentIndex: currentIdx
@@ -96,11 +87,9 @@ class JigsawPuzzleGame {
         tile.classList.add('correct');
       }
 
-      // Calculate background slice coordinates for piece.originalIndex (0..49)
       const origCol = piece.originalIndex % this.cols;
       const origRow = Math.floor(piece.originalIndex / this.cols);
 
-      // Percentage formula for CSS background-position: (col / (cols - 1)) * 100%
       const posX = (origCol / (this.cols - 1)) * 100;
       const posY = (origRow / (this.rows - 1)) * 100;
 
@@ -108,16 +97,13 @@ class JigsawPuzzleGame {
       tile.style.backgroundSize = "1000% 500%";
       tile.style.backgroundPosition = `${posX}% ${posY}%`;
 
-      // Number badge for hint
       const numSpan = document.createElement('span');
       numSpan.className = 'piece-num';
       numSpan.textContent = piece.originalIndex + 1;
       tile.appendChild(numSpan);
 
-      // Click to select / swap
-      tile.onclick = () => this.handleTileClick(index);
+      tile.onclick = (e) => this.handleTileClick(index, e);
 
-      // HTML5 Drag and Drop support
       tile.draggable = true;
       tile.ondragstart = (e) => {
         e.dataTransfer.setData('text/plain', index.toString());
@@ -127,7 +113,7 @@ class JigsawPuzzleGame {
         e.preventDefault();
         const fromIdx = parseInt(e.dataTransfer.getData('text/plain'), 10);
         if (!isNaN(fromIdx) && fromIdx !== index) {
-          this.swapPieces(fromIdx, index);
+          this.swapPieces(fromIdx, index, e.clientX, e.clientY);
         }
       };
 
@@ -137,7 +123,7 @@ class JigsawPuzzleGame {
     this.updateStats();
   }
 
-  handleTileClick(index) {
+  handleTileClick(index, event) {
     if (this.isWon) return;
 
     if (this.selectedIndex === null) {
@@ -148,15 +134,27 @@ class JigsawPuzzleGame {
       this.selectedIndex = null;
       this.render();
     } else {
-      this.swapPieces(this.selectedIndex, index);
+      const x = event ? event.clientX : window.innerWidth / 2;
+      const y = event ? event.clientY : window.innerHeight / 2;
+      this.swapPieces(this.selectedIndex, index, x, y);
       this.selectedIndex = null;
     }
   }
 
-  swapPieces(i, j) {
+  swapPieces(i, j, clientX, clientY) {
     [this.pieces[i], this.pieces[j]] = [this.pieces[j], this.pieces[i]];
     this.moveCount++;
-    window.folkAudio.playClack();
+
+    const becameCorrect = (this.pieces[i].originalIndex === i) || (this.pieces[j].originalIndex === j);
+    if (becameCorrect) {
+      window.folkAudio.playChime(740, 0.35);
+      if (window.app && clientX && clientY) {
+        window.app.spawnFireworkBurst(clientX, clientY, 16);
+      }
+    } else {
+      window.folkAudio.playClack();
+    }
+
     this.render();
     this.checkWin();
   }
@@ -171,6 +169,9 @@ class JigsawPuzzleGame {
           placed++;
         }
       }
+    }
+    if (window.app) {
+      window.app.spawnFireworkBurst(window.innerWidth / 2, window.innerHeight * 0.6, 25);
     }
     this.render();
     this.checkWin();
@@ -195,7 +196,7 @@ class JigsawPuzzleGame {
 }
 
 /* ============================================================
-   2. TOWER OF HANOI (7 DISKS)
+   2. TOWER OF HANOI (4 CELESTIAL DISKS)
    ============================================================ */
 class HanoiGame {
   constructor(onWinCallback) {
@@ -206,6 +207,7 @@ class HanoiGame {
     this.moves = 0;
     this.history = [];
     this.isWon = false;
+    this.diskNames = ['', 'Tinh Tú I', 'Hổ Phách II', 'Tử Tinh III', 'Thiên Hà IV'];
     this.init();
   }
 
@@ -249,7 +251,15 @@ class HanoiGame {
     this.moves = 0;
     this.history = [];
     this.isWon = false;
+    this.setFeedback('✨ Mẹo: Chạm vào trụ để nhấc đĩa trên cùng, chạm trụ tiếp theo để hạ đĩa xuống!');
     this.render();
+  }
+
+  setFeedback(msg, isWarning = false) {
+    const el = document.getElementById('hanoi-feedback');
+    if (!el) return;
+    el.textContent = msg;
+    el.style.color = isWarning ? '#fbbf24' : '';
   }
 
   handlePegAction(pegIdx) {
@@ -282,7 +292,12 @@ class HanoiGame {
 
     if (movingDisk > topOfTo) {
       window.folkAudio.playClack();
-      alert("Đĩa lớn không thể đặt lên đĩa nhỏ hơn!");
+      this.setFeedback('⚠️ Đĩa năng lượng lớn không thể đặt chồng lên đĩa nhỏ hơn!', true);
+      const stand = document.querySelector(`.hanoi-peg-col[data-peg="${toPeg}"] .peg-stand`);
+      if (stand) {
+        stand.classList.add('shake-warning');
+        setTimeout(() => stand.classList.remove('shake-warning'), 400);
+      }
       this.render();
       return;
     }
@@ -291,7 +306,8 @@ class HanoiGame {
     fromStack.pop();
     toStack.push(movingDisk);
     this.moves++;
-    window.folkAudio.playChime(300 + movingDisk * 60, 0.35);
+    this.setFeedback(`✦ Đã chuyển đĩa ${this.diskNames[movingDisk]} sang Trụ ${toPeg + 1}`);
+    window.folkAudio.playChime(360 + movingDisk * 75, 0.35);
 
     this.render();
     this.checkWin();
@@ -311,30 +327,41 @@ class HanoiGame {
   hintStep() {
     if (this.isWon) return;
 
-    const steps = [];
-    const solve = (n, from, to, aux) => {
-      if (n === 1) {
-        steps.push({ from, to });
+    // Optimal BFS / recursive solver from current state to target state [ [], [], [4,3,2,1] ]
+    const serialize = (pegs) => pegs.map(p => p.join(',')).join('|');
+    const goalKey = '||4,3,2,1';
+    const startKey = serialize(this.pegs);
+
+    if (startKey === goalKey) return;
+
+    const queue = [{ pegs: this.pegs.map(p => [...p]), firstMove: null }];
+    const visited = new Set([startKey]);
+
+    while (queue.length > 0) {
+      const curr = queue.shift();
+      const currKey = serialize(curr.pegs);
+      if (currKey === goalKey && curr.firstMove) {
+        this.selectedPeg = null;
+        this.moveDisk(curr.firstMove.from, curr.firstMove.to);
         return;
       }
-      solve(n - 1, from, aux, to);
-      steps.push({ from, to });
-      solve(n - 1, aux, to, from);
-    };
-    solve(this.numDisks, 0, 2, 1);
 
-    if (this.moves < steps.length) {
-      const step = steps[this.moves];
-      this.moveDisk(step.from, step.to);
-    } else {
       for (let f = 0; f < 3; f++) {
+        if (curr.pegs[f].length === 0) continue;
+        const disk = curr.pegs[f][curr.pegs[f].length - 1];
         for (let t = 0; t < 3; t++) {
-          if (f !== t && this.pegs[f].length > 0) {
-            const disk = this.pegs[f][this.pegs[f].length - 1];
-            const top = this.pegs[t].length > 0 ? this.pegs[t][this.pegs[t].length - 1] : Infinity;
-            if (disk < top) {
-              this.moveDisk(f, t);
-              return;
+          if (f === t) continue;
+          const topT = curr.pegs[t].length > 0 ? curr.pegs[t][curr.pegs[t].length - 1] : Infinity;
+          if (disk < topT) {
+            const nextPegs = curr.pegs.map(p => [...p]);
+            nextPegs[t].push(nextPegs[f].pop());
+            const nextKey = serialize(nextPegs);
+            if (!visited.has(nextKey)) {
+              visited.add(nextKey);
+              queue.push({
+                pegs: nextPegs,
+                firstMove: curr.firstMove || { from: f, to: t }
+              });
             }
           }
         }
@@ -370,7 +397,7 @@ class HanoiGame {
       this.pegs[i].forEach((diskSize, idx) => {
         const diskEl = document.createElement('div');
         diskEl.className = `hanoi-disk disk-size-${diskSize}`;
-        diskEl.textContent = `Tầng ${diskSize}`;
+        diskEl.textContent = this.diskNames[diskSize] || `Tầng ${diskSize}`;
 
         if (this.selectedPeg === i && idx === this.pegs[i].length - 1) {
           diskEl.classList.add('lifted');
@@ -383,7 +410,7 @@ class HanoiGame {
 }
 
 /* ============================================================
-   3. LIGHTS OUT GAME (3x3 LANTERNS)
+   3. LIGHTS OUT GAME (3x3 CELESTIAL STAR MATRIX)
    ============================================================ */
 class LightsOutGame {
   constructor(containerId, onWinCallback) {
@@ -419,7 +446,7 @@ class LightsOutGame {
 
     this.grid = Array.from({ length: this.size }, () => Array(this.size).fill(true));
 
-    const scrambleCount = 6;
+    const scrambleCount = 5;
     for (let k = 0; k < scrambleCount; k++) {
       const r = Math.floor(Math.random() * this.size);
       const c = Math.floor(Math.random() * this.size);
@@ -444,12 +471,16 @@ class LightsOutGame {
     });
   }
 
-  handleCellClick(r, c) {
+  handleCellClick(r, c, event) {
     if (this.isWon) return;
 
     this.toggleDirect(r, c);
     this.moves++;
-    window.folkAudio.playChime(440 + (r * 3 + c) * 35, 0.3);
+    window.folkAudio.playChime(480 + (r * 3 + c) * 40, 0.35);
+
+    if (event && window.app) {
+      window.app.spawnFireworkBurst(event.clientX, event.clientY, 12);
+    }
 
     this.render();
     this.checkWin();
@@ -469,23 +500,56 @@ class LightsOutGame {
 
   autoHint() {
     if (this.isWon) return;
-    const currentOn = this.countOn();
-    let bestR = 1, bestC = 1, maxGain = -99;
 
-    for (let r = 0; r < 3; r++) {
-      for (let c = 0; c < 3; c++) {
-        this.toggleDirect(r, c);
-        const gain = this.countOn() - currentOn;
-        if (gain > maxGain) {
-          maxGain = gain;
-          bestR = r;
-          bestC = c;
+    // Exact BFS solver for 3x3 Lights Out (only 512 states!)
+    const encode = (g) => {
+      let mask = 0;
+      for (let r = 0; r < 3; r++) {
+        for (let c = 0; c < 3; c++) {
+          if (g[r][c]) mask |= (1 << (r * 3 + c));
         }
-        this.toggleDirect(r, c);
+      }
+      return mask;
+    };
+
+    const applyMoveMask = (mask, r, c) => {
+      const deltas = [[0, 0], [-1, 0], [1, 0], [0, -1], [0, 1]];
+      let next = mask;
+      deltas.forEach(([dr, dc]) => {
+        const nr = r + dr, nc = c + dc;
+        if (nr >= 0 && nr < 3 && nc >= 0 && nc < 3) {
+          next ^= (1 << (nr * 3 + nc));
+        }
+      });
+      return next;
+    };
+
+    const startMask = encode(this.grid);
+    const targetMask = 511; // all 9 bits = 1
+    if (startMask === targetMask) return;
+
+    const queue = [{ mask: startMask, firstMove: null }];
+    const visited = new Set([startMask]);
+
+    while (queue.length > 0) {
+      const curr = queue.shift();
+      if (curr.mask === targetMask && curr.firstMove) {
+        this.handleCellClick(curr.firstMove.r, curr.firstMove.c);
+        return;
+      }
+      for (let r = 0; r < 3; r++) {
+        for (let c = 0; c < 3; c++) {
+          const nextMask = applyMoveMask(curr.mask, r, c);
+          if (!visited.has(nextMask)) {
+            visited.add(nextMask);
+            queue.push({
+              mask: nextMask,
+              firstMove: curr.firstMove || { r, c }
+            });
+          }
+        }
       }
     }
-
-    this.handleCellClick(bestR, bestC);
   }
 
   countOn() {
@@ -511,17 +575,23 @@ class LightsOutGame {
         cell.className = `lantern-cell ${isOn ? 'on' : 'off'}`;
 
         cell.innerHTML = `
-          <svg viewBox="0 0 50 60" class="lantern-icon">
-            <line x1="25" y1="0" x2="25" y2="10" stroke="#ffd152" stroke-width="2"/>
-            <path d="M12,12 H38 L44,34 Q25,52 6,34 Z" fill="${isOn ? '#cf443b' : '#331b12'}" stroke="#ffd152" stroke-width="2"/>
-            <circle cx="25" cy="30" r="${isOn ? '8' : '4'}" fill="${isOn ? '#ffffa0' : '#4a2818'}"/>
-            <line x1="25" y1="46" x2="25" y2="58" stroke="#cf443b" stroke-width="2.5"/>
-            <circle cx="25" cy="58" r="2.5" fill="#ffd152"/>
+          <svg viewBox="0 0 60 60" class="lantern-icon">
+            <circle cx="30" cy="30" r="22" fill="none" stroke="${isOn ? 'rgba(245, 215, 127, 0.45)' : 'rgba(148, 163, 184, 0.15)'}" stroke-width="1.5" stroke-dasharray="3,3"/>
+            <!-- 4-point outer star -->
+            <polygon points="30,4 36,22 56,30 36,38 30,56 24,38 4,30 24,22" 
+                     fill="${isOn ? '#f5d77f' : '#1e293b'}" 
+                     stroke="${isOn ? '#ffffff' : '#475569'}" 
+                     stroke-width="1.5"/>
+            <!-- 4-point diagonal inner star -->
+            <polygon points="14,14 30,23 46,14 37,30 46,46 30,37 14,46 23,30" 
+                     fill="${isOn ? '#e5c158' : '#0f172a'}" 
+                     opacity="0.85"/>
+            <circle cx="30" cy="30" r="${isOn ? '7' : '4'}" fill="${isOn ? '#ffffff' : '#334155'}"/>
           </svg>
-          <span class="lantern-num">${r * 3 + c + 1}</span>
+          <span class="lantern-num">Sao ${r * 3 + c + 1}</span>
         `;
 
-        cell.onclick = () => this.handleCellClick(r, c);
+        cell.onclick = (e) => this.handleCellClick(r, c, e);
         this.container.appendChild(cell);
       }
     }
@@ -529,15 +599,16 @@ class LightsOutGame {
 }
 
 /* ============================================================
-   4. WATER SORT PUZZLE (6 COLORS, 8 UNITS EACH, 8 TUBES)
+   4. WATER SORT PUZZLE (6 CRYSTAL TUBES TOTAL: 4 COLORS + 2 EMPTY)
    ============================================================ */
 class WaterSortGame {
   constructor(containerId, onWinCallback) {
     this.container = document.getElementById(containerId);
     this.onWin = onWinCallback;
-    this.numColors = 6;
-    this.tubeCapacity = 8;
-    this.totalTubes = 8;
+    // Updated to 6 tubes total: 4 cosmic colors + 2 empty crystal tubes
+    this.numColors = 4;
+    this.tubeCapacity = 4;
+    this.totalTubes = 6;
     this.tubes = [];
     this.selectedTube = null;
     this.moves = 0;
@@ -545,12 +616,10 @@ class WaterSortGame {
     this.isWon = false;
 
     this.colorClasses = [
-      'color-red',
       'color-gold',
-      'color-green',
       'color-blue',
       'color-purple',
-      'color-brown'
+      'color-green'
     ];
 
     this.init();
@@ -568,6 +637,9 @@ class WaterSortGame {
     const btnUndo = document.getElementById('btn-water-undo');
     if (btnUndo) btnUndo.onclick = () => this.undo();
 
+    const btnHint = document.getElementById('btn-water-hint');
+    if (btnHint) btnHint.onclick = () => this.autoHint();
+
     this.reset();
   }
 
@@ -584,6 +656,7 @@ class WaterSortGame {
       }
     }
 
+    // Shuffle thoroughly and ensure no tube starts already solved
     for (let i = pool.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [pool[i], pool[j]] = [pool[j], pool[i]];
@@ -593,6 +666,7 @@ class WaterSortGame {
     for (let i = 0; i < this.numColors; i++) {
       this.tubes.push(pool.slice(i * this.tubeCapacity, (i + 1) * this.tubeCapacity));
     }
+    // Add 2 empty crystal buffer tubes => Total = 6 tubes
     this.tubes.push([]);
     this.tubes.push([]);
 
@@ -623,10 +697,10 @@ class WaterSortGame {
     const fromTube = this.tubes[fromIdx];
     const toTube = this.tubes[toIdx];
 
-    if (fromTube.length === 0) return;
+    if (fromTube.length === 0) return false;
     if (toTube.length >= this.tubeCapacity) {
       window.folkAudio.playClack();
-      return;
+      return false;
     }
 
     const movingColor = fromTube[fromTube.length - 1];
@@ -634,7 +708,7 @@ class WaterSortGame {
 
     if (toTopColor !== null && toTopColor !== movingColor) {
       window.folkAudio.playClack();
-      return;
+      return false;
     }
 
     let unitsToMove = 0;
@@ -649,7 +723,7 @@ class WaterSortGame {
     const availableSpace = this.tubeCapacity - toTube.length;
     const actualMoveCount = Math.min(unitsToMove, availableSpace);
 
-    if (actualMoveCount === 0) return;
+    if (actualMoveCount === 0) return false;
 
     this.history.push({
       from: fromIdx,
@@ -665,8 +739,52 @@ class WaterSortGame {
     this.moves++;
     window.folkAudio.playWaterPour();
 
+    // Check if target tube just became completed
+    if (toTube.length === this.tubeCapacity && toTube.every(c => c === toTube[0])) {
+      window.folkAudio.playChime(784, 0.45);
+      if (window.app) {
+        window.app.spawnFireworkBurst(window.innerWidth / 2, window.innerHeight * 0.55, 22);
+      }
+    }
+
     this.render();
     this.checkWin();
+    return true;
+  }
+
+  autoHint() {
+    if (this.isWon) return;
+    this.selectedTube = null;
+
+    const isTubeComplete = (t) => t.length === this.tubeCapacity && t.every(c => c === t[0]);
+    const isTubeUniform = (t) => t.length > 0 && t.every(c => c === t[0]);
+
+    // 1. Prefer pouring onto a matching non-empty tube that can fit all top consecutive units
+    for (let f = 0; f < this.totalTubes; f++) {
+      const from = this.tubes[f];
+      if (from.length === 0 || isTubeComplete(from)) continue;
+      const topColor = from[from.length - 1];
+
+      for (let t = 0; t < this.totalTubes; t++) {
+        if (f === t) continue;
+        const to = this.tubes[t];
+        if (to.length > 0 && to.length < this.tubeCapacity && to[to.length - 1] === topColor) {
+          if (this.pourWater(f, t)) return;
+        }
+      }
+    }
+
+    // 2. Otherwise pour from a mixed tube into an empty tube
+    for (let f = 0; f < this.totalTubes; f++) {
+      const from = this.tubes[f];
+      if (from.length === 0 || isTubeUniform(from)) continue;
+      for (let t = 0; t < this.totalTubes; t++) {
+        if (f === t) continue;
+        if (this.tubes[t].length === 0) {
+          if (this.pourWater(f, t)) return;
+        }
+      }
+    }
   }
 
   undo() {
@@ -731,7 +849,7 @@ class WaterSortGame {
 }
 
 /* ============================================================
-   5. UNBLOCK WOOD PUZZLE (LUXURY VIETNAMESE WOODCRAFT)
+   5. UNBLOCK ROYAL VAULT (OBSIDIAN & 24K GOLD AGE 21 BLOCK)
    ============================================================ */
 class UnblockWoodGame {
   constructor(boardId, onWinCallback) {
@@ -758,7 +876,6 @@ class UnblockWoodGame {
       btnHint.onclick = () => this.autoHint();
     }
 
-    // Recalculate block positions on mobile screen rotation / resize
     window.addEventListener('resize', () => {
       if (document.getElementById('screen-game-unblock')?.classList.contains('active')) {
         this.render();
@@ -772,7 +889,6 @@ class UnblockWoodGame {
     this.moves = 0;
     this.isWon = false;
 
-    // Classic solvable layout
     this.blocks = [
       { id: 'target', r: 2, c: 1, len: 2, orientation: 'h', isTarget: true },
       { id: 'b1', r: 0, c: 0, len: 2, orientation: 'v', isTarget: false },
@@ -795,7 +911,7 @@ class UnblockWoodGame {
     const elMove = document.getElementById('unblock-move-count');
     if (elMove) elMove.textContent = this.moves;
 
-    const boardWidth = this.board.clientWidth || 360;
+    const boardWidth = this.board.clientWidth || 330;
     const cellSize = boardWidth / this.gridSize;
 
     this.blocks.forEach(block => {
@@ -813,15 +929,13 @@ class UnblockWoodGame {
       el.style.top = `${y + 3}px`;
 
       if (block.isTarget) {
-        // Grand Lacquer Red block with gold cloud motifs & centered text
         el.innerHTML = `
           <div class="lacquer-gloss"></div>
           <div class="lacquer-gold-border"></div>
-          <span class="target-title">❖ MỤC TIÊU ❖</span>
+          <span class="target-title">✦ TUỔI 21 ✦</span>
           <span class="target-arrow">➔</span>
         `;
       } else {
-        // Elegant rosewood block with wood grain & brass studs
         el.innerHTML = `
           <div class="wood-grain-highlight"></div>
           <div class="wood-carved-groove"></div>
@@ -939,23 +1053,63 @@ class UnblockWoodGame {
 
   autoHint() {
     if (this.isWon) return;
-    const target = this.blocks.find(b => b.isTarget);
-    
-    if (this.tryMoveBlock(target, target.c + 1)) return;
 
-    for (let b of this.blocks) {
-      if (b.orientation === 'v' && b.r <= 2 && b.r + b.len > 2) {
-        if (this.tryMoveBlock(b, b.r - 1) || this.tryMoveBlock(b, b.r + 1)) {
-          return;
+    // BFS shortest path solver for the 6x6 Unblock board
+    const encodeState = (blocks) => blocks.map(b => b.orientation === 'h' ? b.c : b.r).join(',');
+    const isOcc = (blocks, r, c, ignoreIdx) => {
+      for (let i = 0; i < blocks.length; i++) {
+        if (i === ignoreIdx) continue;
+        const b = blocks[i];
+        if (b.orientation === 'h') {
+          if (b.r === r && c >= b.c && c < b.c + b.len) return true;
+        } else {
+          if (b.c === c && r >= b.r && r < b.r + b.len) return true;
         }
       }
-    }
+      return false;
+    };
 
-    for (let b of this.blocks) {
-      if (b.orientation === 'h') {
-        if (this.tryMoveBlock(b, b.c + 1) || this.tryMoveBlock(b, b.c - 1)) return;
-      } else {
-        if (this.tryMoveBlock(b, b.r + 1) || this.tryMoveBlock(b, b.r - 1)) return;
+    const startState = this.blocks.map(b => ({ ...b }));
+    const queue = [{ blocks: startState, firstMove: null }];
+    const visited = new Set([encodeState(startState)]);
+
+    while (queue.length > 0) {
+      const curr = queue.shift();
+      const targetBlock = curr.blocks[0];
+      if (targetBlock.c >= 4 && curr.firstMove) {
+        const blk = this.blocks[curr.firstMove.idx];
+        this.tryMoveBlock(blk, curr.firstMove.pos);
+        this.checkWin();
+        return;
+      }
+
+      for (let i = 0; i < curr.blocks.length; i++) {
+        const b = curr.blocks[i];
+        const currPos = b.orientation === 'h' ? b.c : b.r;
+
+        for (const dir of [1, -1]) {
+          let stepPos = currPos + dir;
+          while (stepPos >= 0 && stepPos + b.len <= this.gridSize) {
+            const checkCell = dir > 0 ? stepPos + b.len - 1 : stepPos;
+            const r = b.orientation === 'h' ? b.r : checkCell;
+            const c = b.orientation === 'h' ? checkCell : b.c;
+            if (isOcc(curr.blocks, r, c, i)) break;
+
+            const nextBlocks = curr.blocks.map(x => ({ ...x }));
+            if (b.orientation === 'h') nextBlocks[i].c = stepPos;
+            else nextBlocks[i].r = stepPos;
+
+            const key = encodeState(nextBlocks);
+            if (!visited.has(key)) {
+              visited.add(key);
+              queue.push({
+                blocks: nextBlocks,
+                firstMove: curr.firstMove || { idx: i, pos: stepPos }
+              });
+            }
+            stepPos += dir;
+          }
+        }
       }
     }
   }

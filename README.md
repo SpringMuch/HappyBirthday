@@ -1,26 +1,29 @@
-# 🎂 Ngũ Phúc Kỳ Duyên - Trò Chơi Mừng Sinh Nhật Dân Gian
+# 🎂 Đêm Sao Hoàng Kim • Mừng Sinh Nhật Tuổi 21 ("LOVE YOU, Babe!")
 
-Trò chơi mừng sinh nhật phong cách **Tranh Dân Gian Đông Hồ & Hàng Trống** (màu đỏ chu sa, vàng điệp, xanh chàm, giấy dó, mộc bản khắc gỗ).
-
----
-
-## 🌟 Cập Nhật Mới Theo Yêu Cầu:
-
-1. **Ải 1: Xếp Hình Kỷ Niệm 50 Mảnh**:
-   - Sử dụng cố định **bức ảnh kỷ niệm** của nhóm bạn.
-   - **Bức tranh mẫu hoàn thiện** được hiển thị rõ ràng ngay **phía trên**.
-   - **Khung xếp 50 mảnh tranh** (10 cột × 5 hàng) nằm ngay **phía dưới**, chia cắt tỉ mỉ bằng Canvas sắc nét, không bị lệch hình hay vỡ hình.
-   - Thao tác: Bấm chọn 1 mảnh rồi bấm chọn mảnh thứ hai để hoán đổi cho nhau (hoặc kéo thả).
-   - Nút **"💡 Gợi Ý (Hiện Số)"** hiển thị số thứ tự 1..50 và tự động ghép 5 mảnh nếu cần hỗ trợ.
-
-2. **Khai Mở Bánh Sinh Nhật & Phát Lời Chúc Âm Thanh (Voice Audio)**:
-   - Đã bỏ phần cuộn thư chúc chữ viết theo yêu cầu.
-   - Khi hoàn thành 5 ải hoặc mở bánh sinh nhật, các tầng bánh cát tường sẽ hợp nhất, nến thần bừng sáng, pháo hoa rực rỡ.
-   - **Tự động phát đoạn audio lời chúc** của bạn ("*Anh cảm ơn em nhé, chúc em sinh nhật vui vẻ nhé...*").
-   - Có nút **"▶ Phát Lại Lời Chúc Âm Thanh"** để nghe lại bất kỳ lúc nào.
-   - Có nút **"🎂 Thổi Nến Ước Nguyện"** để thổi nến và gửi gắm điều ước.
+Web App Minigame chúc mừng sinh nhật tuổi 21 theo phong cách **Midnight Celestial & Royal Gold (Bầu Trời Đêm Ngàn Sao & Vàng Hoàng Kim 24K)** — lịch lãm, sang trọng và đầy chất thơ.
 
 ---
 
-## 🚀 Cách Mở & Chơi Trực Tiếp
-Chỉ cần mở tệp `index.html` bằng trình duyệt web (Google Chrome, Microsoft Edge, Safari, Cốc Cốc...) trên máy tính hoặc điện thoại!
+## 🌟 Điểm Nhấn & Nâng Cấp Mới Nhất
+
+1. **Màn Mở Đầu Thơ Mộng – Ấn Chương Hoàng Kim Tuổi 21 (`XXI • 21 ★`)**:
+   - Mở đầu bằng tấm thiệp nhung xanh đêm viền vàng kim với dòng nhắn gửi **"LOVE YOU, Babe!"**.
+   - Chạm vào con dấu sáp vàng `21` sẽ kích hoạt hiệu ứng nổ bụi sao, sao băng xẹt ngang trời và giai điệu chuông gió mở ra Đại Sảnh.
+
+2. **Bầu Trời Đêm Đầy Sao & Tương Tác Bụi Sao (`#ambient-canvas`)**:
+   - Hàng trăm ngôi sao đa tầng lấp lánh (kèm ánh sao thập tự 4 cánh).
+   - **Sao băng vàng kim** định kỳ vụt ngang bầu trời đêm.
+   - **Dải bụi sao tương tác (Interactive Stardust Trail)** bay theo từng chuyển động chuột hoặc thao tác chạm trên điện thoại.
+
+3. **5 Thử Thách Chòm Sao Sang Trọng (Đầy Đủ Trợ Giúp Thông Minh)**:
+   - **Ải 1 – Khung Tranh Ngân Hà (50 Mảnh)**: Ghép bức ảnh kỷ niệm `birthday_photo.jpg` trong khung vàng hoàng gia, có hiệu ứng lóe sáng sao khi đặt đúng mảnh và nút **💡 Gợi Ý (+5 Mảnh)**.
+   - **Ải 2 – Tháp Thiên Hà Tứ Tầng**: 4 đĩa năng lượng ánh sao phát sáng trên trụ bạch kim, tích hợp thuật toán **💡 Bước Kế Tiếp** tối ưu.
+   - **Ải 3 – Thắp Sáng Chòm Sao (3×3)**: Kết nối 9 ngôi sao Bắc Đẩu rực sáng ánh vàng kim.
+   - **Ải 4 – Tinh Chế Tinh Vân (6 Ống Pha Lê)**: Đã tinh chỉnh còn **6 ống pha lê** (4 sắc tinh vân lấp lánh + 2 ống pha lê trống) kèm nút **💡 Gợi Ý Rót** tự động.
+   - **Ải 5 – Khai Mở Cổng Ánh Sao**: Đưa khối hoàng kim **`✦ TUỔI 21 ✦`** vượt qua bàn cờ đá Obsidian tiến ra Cổng Sao.
+
+4. **Bánh Sinh Nhật Hoàng Gia Tuổi 21 & Tương Tác Màn Kết Lộng Lẫy**:
+   - **Bánh kem 3 tầng Midnight Velvet, Champagne Platinum & 24K Gold Drip** khắc chữ **`AGE • XXI`** và **`LOVE YOU, Babe ★`**, trên đỉnh là **cặp nến số `21` mạ vàng** cháy rực rỡ.
+   - **🎤 Thổi Nến Bằng Hơi Thở Thật (Qua Micro) hoặc Nút Bấm**: Thổi trực tiếp vào micro điện thoại/máy tính để tắt nến số `21`, khói bạc bay lên và pháo hoa rực sáng.
+   - **🔊 Vòng Sóng Nhạc Hoàng Kim**: Tự động phát đoạn ghi âm lời chúc `birthday_audio.mp3` cùng thanh sóng nhạc ánh vàng.
+   - **✨ Thả Sao Ước Nguyện Tuổi 21**: Những ngôi sao ước nguyện bay lên bầu trời; chạm vào mỗi ngôi sao sẽ mở ra một lời chúc ngọt ngào dành riêng cho tuổi 21 của anh ấy.
