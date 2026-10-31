@@ -1,6 +1,6 @@
 /**
  * Mini-Games Implementation for Đêm Sao Hoàng Kim • Tuổi 21
- * 1. Jigsaw 50 Tiles (10x5, birthday_photo.jpg, Stardust Snap Effects)
+ * 1. Jigsaw 21 Tiles (7x3, birthday_photo.jpg, Stardust Snap Effects)
  * 2. Tower of Hanoi (4 Celestial Energy Disks, Smooth Feedback)
  * 3. Lights Out (3x3 North Star Constellation Matrix)
  * 4. Water Sort (6 Crystal Tubes total: 4 Nebula Colors + 2 Empty Tubes, Smart Hint)
@@ -159,7 +159,7 @@ class JigsawPuzzleGame {
     this.checkWin();
   }
 
-  autoHelpPieces(count = 5) {
+  autoHelpPieces(count = 3) {
     let placed = 0;
     for (let i = 0; i < this.total && placed < count; i++) {
       if (this.pieces[i].originalIndex !== i) {
