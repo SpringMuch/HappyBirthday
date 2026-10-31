@@ -8,15 +8,15 @@
  */
 
 /* ============================================================
-   1. PUZZLE GAME (50 BLOCKS - 10 COLS x 5 ROWS)
+   1. PUZZLE GAME (21 BLOCKS - 7 COLS x 3 ROWS)
    ============================================================ */
 class JigsawPuzzleGame {
   constructor(containerId, onWinCallback) {
     this.container = document.getElementById(containerId);
     this.onWin = onWinCallback;
-    this.cols = 10;
-    this.rows = 5;
-    this.total = this.cols * this.rows; // 50 pieces
+    this.cols = 7;
+    this.rows = 3;
+    this.total = this.cols * this.rows; // 21 pieces
     this.pieces = []; // Array of { originalIndex, currentIndex }
     this.selectedIndex = null;
     this.moveCount = 0;
@@ -46,8 +46,8 @@ class JigsawPuzzleGame {
         window.folkAudio.playChime(650, 0.45);
         this.showNumbers = true;
         this.container?.classList.add('show-numbers');
-        // Auto-place 5 misplaced tiles into correct positions each click
-        this.autoHelpPieces(5);
+        // Auto-place 3 misplaced tiles into correct positions each click
+        this.autoHelpPieces(3);
       };
     }
   }
@@ -94,7 +94,7 @@ class JigsawPuzzleGame {
       const posY = (origRow / (this.rows - 1)) * 100;
 
       tile.style.backgroundImage = "url('birthday_photo.jpg')";
-      tile.style.backgroundSize = "1000% 500%";
+      tile.style.backgroundSize = `${this.cols * 100}% ${this.rows * 100}%`;
       tile.style.backgroundPosition = `${posX}% ${posY}%`;
 
       const numSpan = document.createElement('span');

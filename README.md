@@ -16,7 +16,7 @@ Web App Minigame chúc mừng sinh nhật tuổi 21 theo phong cách **Midnight 
    - **Dải bụi sao tương tác (Interactive Stardust Trail)** bay theo từng chuyển động chuột hoặc thao tác chạm trên điện thoại.
 
 3. **5 Thử Thách Chòm Sao Sang Trọng (Đầy Đủ Trợ Giúp Thông Minh)**:
-   - **Ải 1 – Khung Tranh Ngân Hà (50 Mảnh)**: Ghép bức ảnh kỷ niệm `birthday_photo.jpg` trong khung vàng hoàng gia, có hiệu ứng lóe sáng sao khi đặt đúng mảnh và nút **💡 Gợi Ý (+5 Mảnh)**.
+   - **Ải 1 – Khung Tranh Ngân Hà (21 Mảnh)**: Ghép 21 mảnh bức ảnh kỷ niệm `birthday_photo.jpg` (7 cột × 3 hàng tượng trưng cho tuổi 21) trong khung vàng hoàng gia, có hiệu ứng lóe sáng sao khi đặt đúng mảnh và nút **💡 Gợi Ý (+3 Mảnh)**.
    - **Ải 2 – Tháp Thiên Hà Tứ Tầng**: 4 đĩa năng lượng ánh sao phát sáng trên trụ bạch kim, tích hợp thuật toán **💡 Bước Kế Tiếp** tối ưu.
    - **Ải 3 – Thắp Sáng Chòm Sao (3×3)**: Kết nối 9 ngôi sao Bắc Đẩu rực sáng ánh vàng kim.
    - **Ải 4 – Tinh Chế Tinh Vân (6 Ống Pha Lê)**: Đã tinh chỉnh còn **6 ống pha lê** (4 sắc tinh vân lấp lánh + 2 ống pha lê trống) kèm nút **💡 Gợi Ý Rót** tự động.

@@ -890,8 +890,8 @@ body.celestial-bg {
 
 .puzzle-board {
   display: grid;
-  grid-template-columns: repeat(10, 1fr);
-  grid-template-rows: repeat(5, 1fr);
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(3, 1fr);
   gap: 2px;
   width: 100%;
   aspect-ratio: 1024 / 816;

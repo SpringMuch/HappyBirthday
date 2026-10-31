@@ -156,9 +156,9 @@ class AppManager {
   }
 
   initMiniGames() {
-    // 1. Jigsaw 50 Tiles (User photo)
+    // 1. Jigsaw 21 Tiles (User photo)
     this.games.puzzle = new JigsawPuzzleGame('puzzle-board', () => {
-      this.onGameWin(1, 'Tinh Cầu I: Đế Pha Lê Hoàng Kim', 'Tuyệt tác 50 mảnh ghép kỷ niệm của chúng ta đã hoàn thiện rực rỡ dưới ánh sao!');
+      this.onGameWin(1, 'Tinh Cầu I: Đế Pha Lê Hoàng Kim', 'Tuyệt tác 21 mảnh ghép kỷ niệm mừng tuổi 21 của chúng ta đã hoàn thiện rực rỡ dưới ánh sao!');
     });
 
     // 2. Tower of Hanoi (4 disks)
